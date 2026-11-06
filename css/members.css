@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Страница «Члены Ассоциации» (members.html)
+   Заголовок, вкладки, пагинация — как на news.html (css/news.css)
+   ========================================================================== */
+
+.members__content {
+  max-width: 1095px;
+}
+
+/* ---------- Панель фильтров: сортировка + алфавит ---------- */
+
+.filter-bar {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filter-bar__sort {
+  display: flex;
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+.filter-bar__letters {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+}
+
+.filter-btn {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 6px;
+  border-radius: 4px;
+  background-color: var(--buttons-sort-default);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.filter-btn--sort {
+  width: 78px;
+}
+
+.filter-btn--sort img {
+  width: 36px;
+  height: 36px;
+}
+
+.filter-btn--letter {
+  flex: 1 0 30px;
+  min-width: 30px;
+  font-family: var(--label-medium-font-family);
+  font-size: var(--label-medium-font-size);
+  line-height: var(--label-medium-line-height);
+  text-transform: uppercase;
+  color: var(--color-text-900);
+  background-color: var(--buttons-sort-letters);
+}
+
+.filter-btn--letter:hover {
+  color: var(--buttons-link-hover);
+}
+
+.filter-btn--sort:hover {
+  background-color: var(--color-pink-200);
+}
+
+.filter-btn.is-active,
+.filter-btn.is-active:hover {
+  color: var(--color-text-900);
+  background-color: var(--buttons-sort-active);
+}
+
+/* ---------- Список членов ---------- */
+
+.members-list__link {
+  display: block;
+  padding: 12px 10px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+  border-bottom: 1px solid var(--color-background-200);
+  transition: background-color var(--transition);
+}
+
+.members-list__link:hover {
+  background-color: var(--color-background-200);
+}
+
+.members-list__item[hidden] {
+  display: none;
+}
+
+.members-empty {
+  padding: 12px 10px;
+  font-size: var(--body-font-size);
+  color: var(--color-background-400);
+}
+
+.members-empty[hidden] {
+  display: none;
+}
+
+/* ---------- Мобильная версия ---------- */
+
+/* Кнопки сортировки стоят на месте, буквы листаются по горизонтали */
+@media (max-width: 1199px) {
+  .filter-bar__letters {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-bar__letters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn--letter {
+    flex: 0 0 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .filter-bar {
+    gap: 8px;
+  }
+
+  .members-list__link {
+    font-size: var(--body-small-font-size);
+  }
+}

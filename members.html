@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Члены Ассоциации — Ассоциация музыкальных образовательных учреждений</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/members.css">
+</head>
+
+<body>
+
+  <!-- ============ Шапка ============ -->
+  <header class="header header--light">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html" aria-label="На главную">
+        <img src="logos/amoy-color.svg" width="158" height="64" alt="Ассоциация музыкальных образовательных учреждений">
+      </a>
+
+      <nav class="header__nav" aria-label="Основное меню">
+        <a class="header__link" href="#">Об Ассоциации</a>
+        <a class="header__link" href="news.html">Новости</a>
+        <a class="header__link is-active" href="members.html" aria-current="page">Члены Ассоциации</a>
+        <a class="header__link" href="#">Проекты</a>
+        <a class="header__link" href="#">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn-icon btn-icon--contact" type="button" aria-label="Контакты" data-log="Контакты">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M24.0149 48C20.4046 48 16.8979 47.2012 13.6238 45.6185L5.53388 47.1864C5.11588 47.2678 4.68309 47.1457 4.36864 46.861C4.05792 46.5762 3.89515 46.1695 3.92104 45.7368L4.55729 38.0154C1.56847 33.8921 0 29.0625 0 23.993C0 10.7648 10.768 0 24 0C37.232 0 48 10.7648 48 23.993C48 37.2211 37.232 47.9859 24 47.9859L24.0149 48Z" fill="currentColor"/>
+            <path d="M14 28C11.795 28 10 26.208 10 24C10 21.795 11.792 20 14 20C16.205 20 18 21.792 18 24C18 26.205 16.208 28 14 28ZM14 22.1634C12.9896 22.1634 12.1754 22.9895 12.1754 23.9881C12.1754 24.9866 13.0015 25.8127 14 25.8127C14.9985 25.8127 15.8246 24.9984 15.8246 23.9881C15.8246 22.9777 15.0104 22.1634 14 22.1634Z" fill="white"/>
+            <path d="M24 28C21.795 28 20 26.208 20 24C20 21.795 21.792 20 24 20C26.205 20 28 21.792 28 24C28 26.205 26.208 28 24 28ZM24 22.1634C22.9896 22.1634 22.1754 22.9895 22.1754 23.9881C22.1754 24.9866 23.0015 25.8127 24 25.8127C24.9985 25.8127 25.8246 24.9984 25.8246 23.9881C25.8246 22.9777 24.9985 22.1634 24 22.1634Z" fill="white"/>
+            <path d="M34 28C31.795 28 30 26.208 30 24C30 21.795 31.792 20 34 20C36.205 20 38 21.792 38 24C38 26.205 36.208 28 34 28ZM34 22.1634C32.9896 22.1634 32.1754 22.9895 32.1754 23.9881C32.1754 24.9866 33.0015 25.8127 34 25.8127C34.9985 25.8127 35.8246 24.9984 35.8246 23.9881C35.8246 22.9777 35.0104 22.1634 34 22.1634Z" fill="white"/>
+          </svg>
+        </button>
+        <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск" data-log="Поиск">
+          <img src="icons/search.svg" width="24" height="24" alt="">
+        </button>
+        <button class="btn-icon btn-icon--menu header__menu-btn js-menu-open" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+          <img src="icons/menu.svg" width="24" height="24" alt="">
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Мобильное меню (до 1023px) -->
+  <div class="mobile-menu js-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__top">
+      <a class="header__logo" href="index.html" aria-label="На главную">
+        <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+      </a>
+      <button class="btn-icon btn-icon--menu mobile-menu__close js-menu-close" type="button" aria-label="Закрыть меню">&times;</button>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Мобильное меню">
+      <a class="header__link" href="#">Об Ассоциации</a>
+      <a class="header__link" href="news.html">Новости</a>
+      <a class="header__link is-active" href="members.html" aria-current="page">Члены Ассоциации</a>
+      <a class="header__link" href="#">Проекты</a>
+      <a class="header__link" href="#">Контакты</a>
+    </nav>
+    <div class="mobile-menu__actions">
+      <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск" data-log="Поиск">
+        <img src="icons/search.svg" width="24" height="24" alt="">
+      </button>
+    </div>
+  </div>
+
+  <main class="container news-page members">
+    <h1 class="news-page__title">Члены Ассоциации</h1>
+
+    <!-- Вкладки: пока работает только «Список», карта будет подключена отдельно -->
+    <div class="tabs news-page__tabs js-tabs" role="tablist">
+      <button class="tab is-active" type="button" role="tab" data-tab="list" aria-selected="true" aria-controls="panel-list">Список</button>
+      <button class="tab" type="button" role="tab" data-tab="map" aria-selected="false" aria-controls="panel-map">Интерактивная карта</button>
+    </div>
+
+    <!-- ============ Список ============ -->
+    <section class="news-panel members__content js-filter" id="panel-list" role="tabpanel" data-panel="list" aria-label="Список членов Ассоциации">
+      <div class="filter-bar">
+        <div class="filter-bar__sort" role="group" aria-label="Сортировка">
+          <button class="filter-btn filter-btn--sort is-active" type="button" data-sort="asc" aria-pressed="true" aria-label="Сортировать от А до Я">
+            <img src="icons/sort-asc.svg" width="36" height="36" alt="">
+          </button>
+          <button class="filter-btn filter-btn--sort" type="button" data-sort="desc" aria-pressed="false" aria-label="Сортировать от Я до А">
+            <img src="icons/sort-desc.svg" width="36" height="36" alt="">
+          </button>
+        </div>
+        <div class="filter-bar__letters" role="group" aria-label="Первая буква названия">
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="А" aria-pressed="false">А</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Б" aria-pressed="false">Б</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="В" aria-pressed="false">В</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Г" aria-pressed="false">Г</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Д" aria-pressed="false">Д</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Е" aria-pressed="false">Е</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Ж" aria-pressed="false">Ж</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="З" aria-pressed="false">З</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="И" aria-pressed="false">И</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="К" aria-pressed="false">К</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Л" aria-pressed="false">Л</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="М" aria-pressed="false">М</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Н" aria-pressed="false">Н</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="О" aria-pressed="false">О</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="П" aria-pressed="false">П</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Р" aria-pressed="false">Р</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="С" aria-pressed="false">С</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Т" aria-pressed="false">Т</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="У" aria-pressed="false">У</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Ф" aria-pressed="false">Ф</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Х" aria-pressed="false">Х</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Ц" aria-pressed="false">Ц</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Ч" aria-pressed="false">Ч</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Ш" aria-pressed="false">Ш</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Э" aria-pressed="false">Э</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Ю" aria-pressed="false">Ю</button>
+              <button class="filter-btn filter-btn--letter" type="button" data-letter="Я" aria-pressed="false">Я</button>
+        </div>
+      </div>
+
+      <ul class="members-list js-filter-list">
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=1">Автономная некоммерческая организация культуры центр творчества «Максимум»</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=2">Академия хорового искусства имени В.С.Попова</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=3">Академическое музыкальное училище при Московской государственной консерватории имени П.И.Чайковского</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=4">Архангельский музыкальный колледж</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=5">Астраханская государственная консерватория</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=6">Астраханский музыкальный колледж имени М.П. Мусоргского</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=7">Башкирский республиканский колледж культуры и искусства</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=8">Белорусская государственная академия музыки</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=9">Брянский областной колледж искусств</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=10">Владимирский областной музыкальный колледж им. А.П. Бородина</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=11">Волгоградская государственная консерватория имени П.А. Серебрякова</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=12">Волжские культурные инициативы</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=13">Воронежский государственный институт искусств</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=14">Восточно-Сибирский государственный институт культуры</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=15">Высшая школа музыки Республики Саха (Якутия) (институт) имени В.А.Босикова</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=16">Гнесинская академия музыки</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=17">Дальневосточный государственный институт искусств</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=18">Екатеринбургский музыкальный колледж имени П.И. Чайковского</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=19">Забайкальский краевой колледж искусств</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=20">Ивановский музыкальный колледж</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=21">Казанская государственная консерватория имени Н.Г. Жиганова</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=22">Красноярский колледж искусств имени П.И. Иванова-Радкевича</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=23">Липецкий областной колледж искусств им. К.Н. Игумнова</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=24">Монгольский государственный университет культуры и искусств</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=25">Нижегородская государственная консерватория имени М.И. Глинки</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=26">Новосибирская специальная музыкальная школа</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=27">Омский музыкальный колледж имени В.Я. Шебалина</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=28">Пермский краевой колледж искусств и культуры</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=29">Ростовская государственная консерватория имени С.В. Рахманинова</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=30">Самарский государственный институт культуры</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=31">Тамбовский государственный музыкально-педагогический институт имени С.В. Рахманинова</a></li>
+            <li class="members-list__item js-filter-item"><a class="members-list__link" href="member.html?id=32">Уральская государственная консерватория имени М.П. Мусоргского</a></li>
+      </ul>
+      <p class="members-empty js-filter-empty" hidden>На эту букву пока нет членов Ассоциации</p>
+
+          <nav class="pagination" aria-label="Страницы: члены Ассоциации">
+            <span class="pagination__item pagination__arrow is-disabled" aria-disabled="true" aria-label="Предыдущая страница"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M9.33964 11L14.2952 6.04447L13.2062 4.95553L7.16175 11L13.2062 17.0445L14.2952 15.9555L9.33964 11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg></span>
+            <span class="pagination__item is-active" aria-current="page">1</span>
+            <a class="pagination__item" href="members.html?page=2">2</a>
+            <a class="pagination__item" href="members.html?page=3">3</a>
+            <span class="pagination__item">...</span>
+            <a class="pagination__item" href="members.html?page=8">8</a>
+            <a class="pagination__item" href="members.html?page=9">9</a>
+            <a class="pagination__item" href="members.html?page=10">10</a>
+            <a class="pagination__item pagination__arrow" href="members.html?page=2" aria-label="Следующая страница"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M12.1179 11L7.16235 6.04445L8.2513 4.95551L14.2958 11L8.2513 17.0444L7.16235 15.9555L12.1179 11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg></a>
+          </nav>
+    </section>
+
+    <!-- ============ Интерактивная карта (заглушка) ============ -->
+    <section class="news-panel" id="panel-map" role="tabpanel" data-panel="map" aria-label="Интерактивная карта" hidden>
+      <div class="map__placeholder"></div>
+    </section>
+  </main>
+
+  <!-- ============ Подвал ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__top">
+        <div class="footer__main">
+          <a class="footer__logo" href="index.html" aria-label="На главную">
+            <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+          </a>
+
+          <nav class="footer__nav" aria-label="Меню в подвале">
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#">Об Ассоциации</a></li>
+              <li><a class="footer__link" href="members.html">Члены Ассоциации</a></li>
+              <li><a class="footer__link" href="news.html">Новости и события</a></li>
+              <li><a class="footer__link" href="#">Проекты</a></li>
+              <li class="only-mobile"><a class="footer__link" href="#">Партнеры</a></li>
+            </ul>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#">Интерактивная карта</a></li>
+              <li class="only-mobile"><a class="footer__link" href="#">Музыкальное образование</a></li>
+              <li><a class="footer__link" href="#">Контакты</a></li>
+              <li><a class="footer__link" href="enter.html">Вступить в Ассоциацию</a></li>
+              <li><a class="footer__link" href="#">Связаться с нами</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <a class="btn-social footer__social" href="#" aria-label="Мы во ВКонтакте">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2008-2026 Ассоциация музыкальных образовательных учреждений</p>
+        <div class="footer__legal">
+          <a class="link-underlined" href="#">Политика конфиденциальности</a>
+          <a class="link-underlined" href="#">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/filter.js"></script>
+</body>
+</html>

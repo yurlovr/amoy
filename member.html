@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Академическое музыкальное училище при МГК имени П.И. Чайковского — Ассоциация музыкальных образовательных учреждений</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <link rel="stylesheet" href="css/member.css">
+</head>
+
+<body>
+
+  <!-- ============ Шапка ============ -->
+  <header class="header header--light">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html" aria-label="На главную">
+        <img src="logos/amoy-color.svg" width="158" height="64" alt="Ассоциация музыкальных образовательных учреждений">
+      </a>
+
+      <nav class="header__nav" aria-label="Основное меню">
+        <a class="header__link" href="#">Об Ассоциации</a>
+        <a class="header__link" href="news.html">Новости</a>
+        <a class="header__link is-active" href="members.html" aria-current="page">Члены Ассоциации</a>
+        <a class="header__link" href="#">Проекты</a>
+        <a class="header__link" href="#">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn-icon btn-icon--contact" type="button" aria-label="Контакты" data-log="Контакты">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M24.0149 48C20.4046 48 16.8979 47.2012 13.6238 45.6185L5.53388 47.1864C5.11588 47.2678 4.68309 47.1457 4.36864 46.861C4.05792 46.5762 3.89515 46.1695 3.92104 45.7368L4.55729 38.0154C1.56847 33.8921 0 29.0625 0 23.993C0 10.7648 10.768 0 24 0C37.232 0 48 10.7648 48 23.993C48 37.2211 37.232 47.9859 24 47.9859L24.0149 48Z" fill="currentColor"/>
+            <path d="M14 28C11.795 28 10 26.208 10 24C10 21.795 11.792 20 14 20C16.205 20 18 21.792 18 24C18 26.205 16.208 28 14 28ZM14 22.1634C12.9896 22.1634 12.1754 22.9895 12.1754 23.9881C12.1754 24.9866 13.0015 25.8127 14 25.8127C14.9985 25.8127 15.8246 24.9984 15.8246 23.9881C15.8246 22.9777 15.0104 22.1634 14 22.1634Z" fill="white"/>
+            <path d="M24 28C21.795 28 20 26.208 20 24C20 21.795 21.792 20 24 20C26.205 20 28 21.792 28 24C28 26.205 26.208 28 24 28ZM24 22.1634C22.9896 22.1634 22.1754 22.9895 22.1754 23.9881C22.1754 24.9866 23.0015 25.8127 24 25.8127C24.9985 25.8127 25.8246 24.9984 25.8246 23.9881C25.8246 22.9777 24.9985 22.1634 24 22.1634Z" fill="white"/>
+            <path d="M34 28C31.795 28 30 26.208 30 24C30 21.795 31.792 20 34 20C36.205 20 38 21.792 38 24C38 26.205 36.208 28 34 28ZM34 22.1634C32.9896 22.1634 32.1754 22.9895 32.1754 23.9881C32.1754 24.9866 33.0015 25.8127 34 25.8127C34.9985 25.8127 35.8246 24.9984 35.8246 23.9881C35.8246 22.9777 35.0104 22.1634 34 22.1634Z" fill="white"/>
+          </svg>
+        </button>
+        <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск" data-log="Поиск">
+          <img src="icons/search.svg" width="24" height="24" alt="">
+        </button>
+        <button class="btn-icon btn-icon--menu header__menu-btn js-menu-open" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+          <img src="icons/menu.svg" width="24" height="24" alt="">
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Мобильное меню (до 1023px) -->
+  <div class="mobile-menu js-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__top">
+      <a class="header__logo" href="index.html" aria-label="На главную">
+        <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+      </a>
+      <button class="btn-icon btn-icon--menu mobile-menu__close js-menu-close" type="button" aria-label="Закрыть меню">&times;</button>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Мобильное меню">
+      <a class="header__link" href="#">Об Ассоциации</a>
+      <a class="header__link" href="news.html">Новости</a>
+      <a class="header__link is-active" href="members.html" aria-current="page">Члены Ассоциации</a>
+      <a class="header__link" href="#">Проекты</a>
+      <a class="header__link" href="#">Контакты</a>
+    </nav>
+    <div class="mobile-menu__actions">
+      <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск" data-log="Поиск">
+        <img src="icons/search.svg" width="24" height="24" alt="">
+      </button>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============ Хлебные крошки ============ -->
+    <div class="container page-top">
+      <nav aria-label="Хлебные крошки">
+        <ol class="breadcrumbs">
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="index.html">Главная</a></li>
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="members.html">Члены Ассоциации</a></li>
+          <li class="breadcrumbs__item breadcrumbs__item--current"><span class="breadcrumbs__current" aria-current="page">Академическое музыкальное училище при Московской государственной консерватории имени П.И. Чайковского</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- ============ Карточка члена Ассоциации ============ -->
+    <article class="container member">
+      <div class="member__main">
+        <div class="member__info">
+          <h1 class="member__title">Академическое музыкальное училище при Московской государственной консерватории имени П.И.&nbsp;Чайковского</h1>
+
+          <!-- Реквизиты: пустые строки не выводить -->
+          <dl class="member__props">
+            <div class="member__row">
+              <dt>Адрес:</dt>
+              <dd>Россия, г. Москва</dd>
+            </div>
+            <div class="member__row">
+              <dt>Название:</dt>
+              <dd>Федеральное государственное бюджетное профессиональное образовательное учреждение «Академическое музыкальное училище при Московской государственной консерватории имени П.И.Чайковского»</dd>
+            </div>
+            <div class="member__row">
+              <dt>Учредитель:</dt>
+              <dd>Министерство культуры Российской Федерации</dd>
+            </div>
+            <div class="member__row">
+              <dt>Год основания:</dt>
+              <dd>1891</dd>
+            </div>
+            <div class="member__row">
+              <dt>Директор:</dt>
+              <dd>Демидов Владимир Петрович</dd>
+            </div>
+            <div class="member__row">
+              <dt>Сайт:</dt>
+              <dd><a class="text-link" href="https://amumgk.ru/" target="_blank" rel="noopener">amumgk.ru</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <img class="member__photo" src="images/member.png" width="536" height="340" alt="Здание училища">
+      </div>
+
+      <!-- Переход к предыдущему / следующему члену по кругу. data-total — всего членов -->
+      <nav class="member__nav js-member-nav" data-total="32" aria-label="Другие члены Ассоциации">
+        <a class="btn-arrow js-member-prev" href="member.html?id=32" aria-label="Предыдущий член Ассоциации"><img src="icons/chevron-left.svg" width="11" height="18" alt=""></a>
+        <a class="btn-arrow js-member-next" href="member.html?id=2" aria-label="Следующий член Ассоциации"><img src="icons/chevron-right.svg" width="11" height="18" alt=""></a>
+      </nav>
+    </article>
+
+      <!-- Новости: слайдер внизу -->
+      <section class="container related js-slider" data-slider="cards">
+        <div class="section-head">
+          <h2 class="title-h5">Новости</h2>
+          <div class="slider-nav">
+            <button class="btn-arrow btn-arrow--small js-slider-prev" type="button" aria-label="Назад"><img src="icons/chevron-left.svg" width="11" height="18" alt=""></button>
+            <button class="btn-arrow btn-arrow--small js-slider-next" type="button" aria-label="Вперёд"><img src="icons/chevron-right.svg" width="11" height="18" alt=""></button>
+          </div>
+        </div>
+        <div class="swiper related__slider">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">3 октября 2025 года в Екатеринбурге члены Ассоциации приняли участие в Деловой программе VIII Симфонического форума России</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">В марте 2024 года Московская средняя специальная музыкальная школа (колледж) имени Гнесиных проводит три конкурса проекта «Gnessin Competition for Young Musicians»</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">3 октября 2025 года в Екатеринбурге члены Ассоциации приняли участие в Деловой программе VIII Симфонического форума России</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">В марте 2024 года Московская средняя специальная музыкальная школа (колледж) имени Гнесиных проводит три конкурса проекта «Gnessin Competition for Young Musicians»</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+          </div>
+        </div>
+      </section>
+
+  </main>
+
+  <!-- ============ Подвал ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__top">
+        <div class="footer__main">
+          <a class="footer__logo" href="index.html" aria-label="На главную">
+            <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+          </a>
+
+          <nav class="footer__nav" aria-label="Меню в подвале">
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#">Об Ассоциации</a></li>
+              <li><a class="footer__link" href="members.html">Члены Ассоциации</a></li>
+              <li><a class="footer__link" href="news.html">Новости и события</a></li>
+              <li><a class="footer__link" href="#">Проекты</a></li>
+              <li class="only-mobile"><a class="footer__link" href="#">Партнеры</a></li>
+            </ul>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#">Интерактивная карта</a></li>
+              <li class="only-mobile"><a class="footer__link" href="#">Музыкальное образование</a></li>
+              <li><a class="footer__link" href="#">Контакты</a></li>
+              <li><a class="footer__link" href="enter.html">Вступить в Ассоциацию</a></li>
+              <li><a class="footer__link" href="#">Связаться с нами</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <a class="btn-social footer__social" href="#" aria-label="Мы во ВКонтакте">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2008-2026 Ассоциация музыкальных образовательных учреждений</p>
+        <div class="footer__legal">
+          <a class="link-underlined" href="#">Политика конфиденциальности</a>
+          <a class="link-underlined" href="#">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/slider.js"></script>
+</body>
+</html>

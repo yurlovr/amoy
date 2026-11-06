@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IX Международный конкурс молодых исполнителей — Ассоциация музыкальных образовательных учреждений</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/detail.css">
+</head>
+
+<body>
+
+  <!-- ============ Шапка ============ -->
+  <header class="header header--light">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html" aria-label="На главную">
+        <img src="logos/amoy-color.svg" width="158" height="64" alt="Ассоциация музыкальных образовательных учреждений">
+      </a>
+
+      <nav class="header__nav" aria-label="Основное меню">
+        <a class="header__link" href="#">Об Ассоциации</a>
+        <a class="header__link is-active" href="news.html" aria-current="page">Новости</a>
+        <a class="header__link" href="members.html">Члены Ассоциации</a>
+        <a class="header__link" href="#">Проекты</a>
+        <a class="header__link" href="#">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn-icon btn-icon--contact" type="button" aria-label="Контакты" data-log="Контакты">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M24.0149 48C20.4046 48 16.8979 47.2012 13.6238 45.6185L5.53388 47.1864C5.11588 47.2678 4.68309 47.1457 4.36864 46.861C4.05792 46.5762 3.89515 46.1695 3.92104 45.7368L4.55729 38.0154C1.56847 33.8921 0 29.0625 0 23.993C0 10.7648 10.768 0 24 0C37.232 0 48 10.7648 48 23.993C48 37.2211 37.232 47.9859 24 47.9859L24.0149 48Z" fill="currentColor"/>
+            <path d="M14 28C11.795 28 10 26.208 10 24C10 21.795 11.792 20 14 20C16.205 20 18 21.792 18 24C18 26.205 16.208 28 14 28ZM14 22.1634C12.9896 22.1634 12.1754 22.9895 12.1754 23.9881C12.1754 24.9866 13.0015 25.8127 14 25.8127C14.9985 25.8127 15.8246 24.9984 15.8246 23.9881C15.8246 22.9777 15.0104 22.1634 14 22.1634Z" fill="white"/>
+            <path d="M24 28C21.795 28 20 26.208 20 24C20 21.795 21.792 20 24 20C26.205 20 28 21.792 28 24C28 26.205 26.208 28 24 28ZM24 22.1634C22.9896 22.1634 22.1754 22.9895 22.1754 23.9881C22.1754 24.9866 23.0015 25.8127 24 25.8127C24.9985 25.8127 25.8246 24.9984 25.8246 23.9881C25.8246 22.9777 24.9985 22.1634 24 22.1634Z" fill="white"/>
+            <path d="M34 28C31.795 28 30 26.208 30 24C30 21.795 31.792 20 34 20C36.205 20 38 21.792 38 24C38 26.205 36.208 28 34 28ZM34 22.1634C32.9896 22.1634 32.1754 22.9895 32.1754 23.9881C32.1754 24.9866 33.0015 25.8127 34 25.8127C34.9985 25.8127 35.8246 24.9984 35.8246 23.9881C35.8246 22.9777 35.0104 22.1634 34 22.1634Z" fill="white"/>
+          </svg>
+        </button>
+        <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск" data-log="Поиск">
+          <img src="icons/search.svg" width="24" height="24" alt="">
+        </button>
+        <button class="btn-icon btn-icon--menu header__menu-btn js-menu-open" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+          <img src="icons/menu.svg" width="24" height="24" alt="">
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Мобильное меню (до 1023px) -->
+  <div class="mobile-menu js-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__top">
+      <a class="header__logo" href="index.html" aria-label="На главную">
+        <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+      </a>
+      <button class="btn-icon btn-icon--menu mobile-menu__close js-menu-close" type="button" aria-label="Закрыть меню">&times;</button>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Мобильное меню">
+      <a class="header__link" href="#">Об Ассоциации</a>
+      <a class="header__link is-active" href="news.html" aria-current="page">Новости</a>
+      <a class="header__link" href="members.html">Члены Ассоциации</a>
+      <a class="header__link" href="#">Проекты</a>
+      <a class="header__link" href="#">Контакты</a>
+    </nav>
+    <div class="mobile-menu__actions">
+      <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск" data-log="Поиск">
+        <img src="icons/search.svg" width="24" height="24" alt="">
+      </button>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============ Хлебные крошки ============ -->
+    <div class="container page-top">
+      <nav aria-label="Хлебные крошки">
+        <ol class="breadcrumbs">
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="index.html">Главная</a></li>
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="news.html" data-type-href="news.html?tab={type}">Новости и события</a></li>
+          <li class="breadcrumbs__item breadcrumbs__item--current"><span class="breadcrumbs__current" aria-current="page">IX Международный конкурс молодых исполнителей на духовых и ударных инструментах «Сибирские музыкальные ассамблеи»</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <article class="container detail">
+      <div class="detail__column">
+
+        <!-- ============ Заголовок ============ -->
+        <header class="detail__head">
+          <div class="detail__head-text">
+            <time class="badge" datetime="2026-06-29">29.06.2026</time>
+            <h1 class="detail__title">IX Международный конкурс молодых исполнителей на духовых и ударных инструментах «Сибирские музыкальные ассамблеи»</h1>
+          </div>
+          <img class="detail__cover" src="images/event.jpg" width="310" height="200" alt="">
+        </header>
+
+        <!-- ============ Текст из CMS (ссылки внутри текста подсвечиваются автоматически) ============ -->
+        <div class="rich-text">
+          <p>Конкурс имеет 27-летнюю историю. Он берёт начало в 1999 году, когда на базе школы был организован Международный фестиваль молодых исполнителей на деревянных духовых инструментах. У истоков стояли народный артист СССР Арнольд Михайлович Кац и заслуженный деятель искусств РФ Александр Тихонович Марченко. Проводимый раз в три года, конкурс является единственным в Сибирском федеральном округе состязанием международного уровня для исполнителей на духовых и ударных инструментах. Его цель – популяризация этих инструментов, выявление и поддержка молодых талантов, повышение исполнительской культуры и укрепление профессиональных связей между педагогами и учебными заведениями.</p>
+          <p>В конкурсе могут принять участие музыканты трёх возрастных категорий. Младшая группа включает учащихся детских музыкальных школ и школ искусств, а также учащихся средних специальных музыкальных школ до 7 класса включительно. Средняя группа – это студенты средних специальных учебных заведений, а также учащиеся и студенты средних специальных музыкальных школ с 8 класса. Старшая группа представлена студентами и магистрантами высших учебных заведений (консерваторий, академий, институтов искусств). Для ударных инструментов младшая группа дополнительно разделена на подгруппу А (до 4 класса) и подгруппу Б (5–7 классы). Соревнования проводятся по специальностям: флейта, гобой, кларнет, фагот, саксофон, труба, валторна, тромбон, бас-тромбон, туба и ударные инструменты.</p>
+          <p>Конкурсные прослушивания проходят в два этапа. Первый этап – заочный, по видеозаписям, которые участники направляют вместе с пакетом документов. Второй этап – очный, он состоится непосредственно в Новосибирске в дни проведения конкурса. Для участников младшей группы предусмотрен один тур, для средней и старшей – два тура. Все произведения исполняются наизусть (за исключением игры на мембранных ударных инструментах, где допускается исполнение по нотам).</p>
+          <p class="lead">Заявки на участие принимаются до 2 сентября 2026 года по электронной почте <a href="mailto:nsmsh-konkurs@yandex.ru">nsmsh-konkurs@yandex.ru</a> с пометкой «Сибирские музыкальные ассамблеи».</p>
+        </div>
+
+        <!-- ============ Галерея (необязательный блок: выводить, только если есть фото) ============ -->
+        <div class="gallery js-slider" data-slider="gallery">
+          <div class="swiper gallery__slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide gallery__slide"><img src="images/news.jpg" width="310" height="200" alt="" loading="lazy"></div>
+                <div class="swiper-slide gallery__slide"><img src="images/event.jpg" width="310" height="200" alt="" loading="lazy"></div>
+                <div class="swiper-slide gallery__slide"><img src="images/news.jpg" width="310" height="200" alt="" loading="lazy"></div>
+                <div class="swiper-slide gallery__slide"><img src="images/event.jpg" width="310" height="200" alt="" loading="lazy"></div>
+                <div class="swiper-slide gallery__slide"><img src="images/news.jpg" width="310" height="200" alt="" loading="lazy"></div>
+            </div>
+          </div>
+          <div class="slider-nav">
+            <button class="btn-arrow btn-arrow--small js-slider-prev" type="button" aria-label="Предыдущее фото"><img src="icons/chevron-left.svg" width="11" height="18" alt=""></button>
+            <button class="btn-arrow btn-arrow--small js-slider-next" type="button" aria-label="Следующее фото"><img src="icons/chevron-right.svg" width="11" height="18" alt=""></button>
+          </div>
+        </div>
+
+        <!-- ============ Продолжение текста из CMS ============ -->
+        <div class="rich-text">
+          <p>В пакет документов необходимо включить видеозапись конкурсной программы, заполненную заявку, согласие на обработку персональных данных, копию свидетельства о рождении или паспорта (с пропиской), справку из учебного заведения, фотографию высокого разрешения (300 dpi) для буклета, а также копии ИНН, СНИЛС и реквизиты банковской карты для возможного перечисления премии. Несовершеннолетние участники дополнительно предоставляют копию паспорта родителя, его ИНН, СНИЛС и банковские реквизиты. К видеозаписям предъявляются строгие требования: формат avi или mp4, высокое качество звука и изображения, синхронизация аудио и видео, отсутствие монтажа и постобработки, съёмка без остановки камеры от начала до конца программы. Ссылки на видео должны размещаться в облачных хранилищах; ссылки на видеохостинги и социальные сети не рассматриваются. Расходы на проезд и проживание несут направляющие организации или сами участники.</p>
+          <p>Победители, занявшие I–III места, становятся лауреатами и получают дипломы и денежные премии. IV–VI места удостаиваются звания дипломантов. Жюри имеет право присуждать не все места или делить места между несколькими участниками. В состав жюри традиционно входят выдающиеся музыканты и педагоги из России и зарубежных стран, которые также проводят мастер-классы и творческие встречи. Лауреаты прошлых лет вошли в лучшие оркестры и успешно преподают; среди них – Матвей Демин, Анна Комарова, Иван Столбов, Данила Янковский, Игорь Завьялов и другие.</p>
+        </div>
+
+        <!-- ============ Документы (необязательный блок: выводить, только если есть файлы) ============ -->
+        <section class="detail-docs">
+          <h2 class="title-h5">Документы</h2>
+          <ul class="doc-list">
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Устав Ассоциации.pdf">
+                <span class="doc-link__icon"><img src="icons/pdf.svg" width="20" height="20" alt=""></span>
+                <span>Устав Ассоциации (4,58 мБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Порядок приема в члены Ассоциации.pdf">
+                <span class="doc-link__icon"><img src="icons/pdf.svg" width="20" height="20" alt=""></span>
+                <span>Порядок приема в члены Ассоциации музыкальных образовательных учреждений и исключения из числа членов Ассоциации (219 кБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Заявление о приеме в Ассоциацию.pdf">
+                <span class="doc-link__icon"><img src="icons/doc.svg" width="20" height="20" alt=""></span>
+                <span>Заявление о приеме в Ассоциацию (30 кБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Анкета.pdf">
+                <span class="doc-link__icon"><img src="icons/doc.svg" width="20" height="20" alt=""></span>
+                <span>Анкета (32 кБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Регламент и положение о членстве в Ассоциации.pdf">
+                <span class="doc-link__icon"><img src="icons/pdf.svg" width="20" height="20" alt=""></span>
+                <span>Регламент и положение о членстве в Ассоциации музыкальных образовательных учреждений (383 кБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Порядок определения размера и способа уплаты членских взносов.pdf">
+                <span class="doc-link__icon"><img src="icons/pdf.svg" width="20" height="20" alt=""></span>
+                <span>Порядок определения размера и способа уплаты членских взносов, дополнительных имущественных и иных взносах в имущество (378 кБ)</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Возврат к списку: ведёт на нужную вкладку news.html -->
+        <a class="btn btn--secondary detail__back" href="news.html" data-type-href="news.html?tab={type}" data-text-news="К списку новостей" data-text-events="К списку событий">К списку новостей</a>
+      </div>
+    </article>
+
+      <!-- Новости: слайдер внизу (показывается только для своего типа) -->
+      <section class="container related js-slider" data-slider="cards" data-detail-type="news">
+        <div class="section-head">
+          <h2 class="title-h5">Новости</h2>
+          <div class="slider-nav">
+            <button class="btn-arrow btn-arrow--small js-slider-prev" type="button" aria-label="Назад"><img src="icons/chevron-left.svg" width="11" height="18" alt=""></button>
+            <button class="btn-arrow btn-arrow--small js-slider-next" type="button" aria-label="Вперёд"><img src="icons/chevron-right.svg" width="11" height="18" alt=""></button>
+          </div>
+        </div>
+        <div class="swiper related__slider">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">3 октября 2025 года в Екатеринбурге члены Ассоциации приняли участие в Деловой программе VIII Симфонического форума России</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">В марте 2024 года Московская средняя специальная музыкальная школа (колледж) имени Гнесиных проводит три конкурса проекта «Gnessin Competition for Young Musicians»</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">3 октября 2025 года в Екатеринбурге члены Ассоциации приняли участие в Деловой программе VIII Симфонического форума России</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=news">
+                  <div class="card__image">
+                    <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__info">
+                    <p class="card__text">В марте 2024 года Московская средняя специальная музыкальная школа (колледж) имени Гнесиных проводит три конкурса проекта «Gnessin Competition for Young Musicians»</p>
+                    <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                  </div>
+                </a>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- События: слайдер внизу (показывается только для своего типа) -->
+      <section class="container related js-slider" data-slider="cards" data-detail-type="events" hidden>
+        <div class="section-head">
+          <h2 class="title-h5">События</h2>
+          <div class="slider-nav">
+            <button class="btn-arrow btn-arrow--small js-slider-prev" type="button" aria-label="Назад"><img src="icons/chevron-left.svg" width="11" height="18" alt=""></button>
+            <button class="btn-arrow btn-arrow--small js-slider-next" type="button" aria-label="Вперёд"><img src="icons/chevron-right.svg" width="11" height="18" alt=""></button>
+          </div>
+        </div>
+        <div class="swiper related__slider">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=events">
+                  <div class="card__image">
+                    <img src="images/event.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__body">
+                    <span class="card__category">Конкурс</span>
+                    <div class="card__info">
+                      <p class="card__text">Шестой межрегиональный Фестиваль-смотр выпускников музыкальных училищ (колледжей искусств) пройдёт в Москве с 28 сентября по 2 октября 2026 года</p>
+                      <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=events">
+                  <div class="card__image">
+                    <img src="images/event.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__body">
+                    <span class="card__category">Фестиваль</span>
+                    <div class="card__info">
+                      <p class="card__text">29–30 сентября 2026 года в Тамбове состоится Вторая всероссийская творческая лаборатория для молодых композиторов «Прима Домра»</p>
+                      <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=events">
+                  <div class="card__image">
+                    <img src="images/event.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__body">
+                    <span class="card__category">Форум</span>
+                    <div class="card__info">
+                      <p class="card__text">IX Международный конкурс молодых исполнителей на духовых и ударных инструментах «Сибирские музыкальные ассамблеи»</p>
+                      <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=events">
+                  <div class="card__image">
+                    <img src="images/event.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__body">
+                    <span class="card__category">Общее собрание</span>
+                    <div class="card__info">
+                      <p class="card__text">Общее собрание членов Ассоциации</p>
+                      <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=events">
+                  <div class="card__image">
+                    <img src="images/event.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__body">
+                    <span class="card__category">Конкурс</span>
+                    <div class="card__info">
+                      <p class="card__text">Шестой межрегиональный Фестиваль-смотр выпускников музыкальных училищ (колледжей искусств) пройдёт в Москве с 28 сентября по 2 октября 2026 года</p>
+                      <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=events">
+                  <div class="card__image">
+                    <img src="images/event.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__body">
+                    <span class="card__category">Фестиваль</span>
+                    <div class="card__info">
+                      <p class="card__text">29–30 сентября 2026 года в Тамбове состоится Вторая всероссийская творческая лаборатория для молодых композиторов «Прима Домра»</p>
+                      <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=events">
+                  <div class="card__image">
+                    <img src="images/event.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__body">
+                    <span class="card__category">Форум</span>
+                    <div class="card__info">
+                      <p class="card__text">IX Международный конкурс молодых исполнителей на духовых и ударных инструментах «Сибирские музыкальные ассамблеи»</p>
+                      <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="card" href="new.html?type=events">
+                  <div class="card__image">
+                    <img src="images/event.jpg" width="312" height="200" alt="" loading="lazy">
+                  </div>
+                  <div class="card__body">
+                    <span class="card__category">Общее собрание</span>
+                    <div class="card__info">
+                      <p class="card__text">Общее собрание членов Ассоциации</p>
+                      <time class="card__date" datetime="2026-07-22">22.07.2026</time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+          </div>
+        </div>
+      </section>
+
+  </main>
+
+  <!-- ============ Подвал ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__top">
+        <div class="footer__main">
+          <a class="footer__logo" href="index.html" aria-label="На главную">
+            <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+          </a>
+
+          <nav class="footer__nav" aria-label="Меню в подвале">
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#">Об Ассоциации</a></li>
+              <li><a class="footer__link" href="members.html">Члены Ассоциации</a></li>
+              <li><a class="footer__link" href="news.html">Новости и события</a></li>
+              <li><a class="footer__link" href="#">Проекты</a></li>
+              <li class="only-mobile"><a class="footer__link" href="#">Партнеры</a></li>
+            </ul>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#">Интерактивная карта</a></li>
+              <li class="only-mobile"><a class="footer__link" href="#">Музыкальное образование</a></li>
+              <li><a class="footer__link" href="#">Контакты</a></li>
+              <li><a class="footer__link" href="enter.html">Вступить в Ассоциацию</a></li>
+              <li><a class="footer__link" href="#">Связаться с нами</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <a class="btn-social footer__social" href="#" aria-label="Мы во ВКонтакте">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2008-2026 Ассоциация музыкальных образовательных учреждений</p>
+        <div class="footer__legal">
+          <a class="link-underlined" href="#">Политика конфиденциальности</a>
+          <a class="link-underlined" href="#">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/slider.js"></script>
+</body>
+</html>

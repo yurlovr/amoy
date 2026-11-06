@@ -1,0 +1,677 @@
+/* ==========================================================================
+   Шапка
+   ========================================================================== */
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding-top: 16px;
+  color: var(--color-background-100);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.header__logo {
+  flex-shrink: 0;
+  width: 158px;
+}
+
+.header__logo img {
+  width: 100%;
+  height: auto;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.header__link {
+  font-family: var(--body-small-font-family);
+  font-size: var(--body-small-font-size);
+  font-weight: var(--body-small-bold-font-weight);
+  line-height: var(--body-small-line-height);
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.header__link:hover {
+  color: var(--buttons-footer-hover);
+}
+
+.header__link:active {
+  color: var(--buttons-footer-pressed);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__menu-btn {
+  display: none;
+}
+
+/* Светлая шапка для внутренних страниц: в потоке, тёмный текст, цветной логотип */
+.header--light {
+  position: relative;
+  color: var(--buttons-menu-default);
+}
+
+.header--light .header__link:hover,
+.header--light .header__link.is-active {
+  color: var(--buttons-menu-hover);
+}
+
+.header__link.is-active {
+  color: var(--buttons-footer-hover);
+}
+
+/* В светлой шапке кнопка меню тёмная (buttons/account/background) */
+.header--light .header__menu-btn {
+  background-color: var(--buttons-dark-default);
+}
+
+.header--light .header__menu-btn:hover {
+  background-color: var(--buttons-dark-hover);
+}
+
+.header--light .header__menu-btn:active {
+  background-color: var(--buttons-dark-pressed);
+}
+
+@media (max-width: 1199px) {
+  .header__nav {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__menu-btn {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .header__logo {
+    width: 132px;
+  }
+
+  .header__actions .btn-icon--contact,
+  .header__actions .btn-icon--search {
+    display: none;
+  }
+}
+
+/* Блок хлебных крошек под светлой шапкой на внутренних страницах */
+.page-top {
+  padding-top: 24px;
+}
+
+/* ---------- Мобильное меню (в макете нет, сделано по стилю шапки) ---------- */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 16px var(--container-padding) 32px;
+  overflow-y: auto;
+  color: var(--color-background-100);
+  background-color: var(--color-blue-800);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu__close {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobile-menu__nav .header__link {
+  font-size: 20px;
+}
+
+.mobile-menu__actions {
+  display: flex;
+  gap: 12px;
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Главный слайдер
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  min-height: 720px;
+  overflow: hidden;
+  color: var(--color-background-100);
+  background-color: var(--color-blue-800);
+}
+
+/* Слайдер — только фоновые картинки, текст поверх стоит на месте */
+.hero__slider {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: var(--hero-gradient);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 3;
+  min-height: 720px;
+  padding-top: 176px;
+  padding-bottom: 51px;
+  pointer-events: none;
+}
+
+.hero__inner a,
+.hero__inner button {
+  pointer-events: auto;
+}
+
+.hero__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 48px;
+}
+
+.hero__stats {
+  margin-bottom: 80px;
+}
+
+.hero__social {
+  position: absolute;
+  top: 128px;
+  right: var(--container-padding);
+}
+
+.hero__controls {
+  position: absolute;
+  right: var(--container-padding);
+  bottom: 60px;
+  display: flex;
+  gap: 4px;
+}
+
+.hero__pagination {
+  display: none;
+}
+
+@media (max-width: 1199px) {
+  .hero__title-wrap {
+    margin-bottom: 40px;
+  }
+
+  .hero__stats {
+    margin-bottom: 56px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero,
+  .hero__inner {
+    min-height: 712px;
+  }
+
+  .hero__slider .swiper-slide img {
+    object-position: 75% bottom;
+  }
+
+  .hero__overlay {
+    background-image: var(--hero-gradient-mobile);
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    padding-top: 111px;
+    padding-bottom: 24px;
+  }
+
+  .hero__title-wrap {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .hero__stats {
+    margin-top: auto;
+    margin-bottom: 32px;
+  }
+
+  .hero__btn {
+    width: 100%;
+  }
+
+  .hero__social,
+  .hero__controls {
+    display: none;
+  }
+
+  /* Пагинация: активная — белая полоска 12px, остальные — тёмные 4px */
+  .hero__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .hero__pagination .swiper-pagination-bullet {
+    width: 4px;
+    height: 3px;
+    margin: 0 !important;
+    border-radius: 2px;
+    background-color: var(--color-text-900);
+    opacity: 1;
+    transition: width var(--transition), background-color var(--transition);
+  }
+
+  .hero__pagination .swiper-pagination-bullet-active {
+    width: 12px;
+    background-color: var(--color-background-100);
+  }
+}
+
+/* ==========================================================================
+   События и новости
+   ========================================================================== */
+
+.events {
+  padding-top: 64px;
+}
+
+.news {
+  padding-top: 64px;
+}
+
+@media (max-width: 767px) {
+  .events {
+    padding-top: 48px;
+  }
+
+  .news {
+    padding-top: 32px;
+  }
+
+  .events .section-head,
+  .news .section-head,
+  .projects .section-head {
+    margin-bottom: 24px;
+  }
+}
+
+/* ==========================================================================
+   Баннеры «География» и «Ассоциация»
+   ========================================================================== */
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-left: 90px;
+}
+
+.banner__media {
+  flex-shrink: 0;
+  width: 432px;
+}
+
+.banner__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.banner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  width: 760px;
+}
+
+.banner__head {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.geography {
+  padding-top: 112px;
+}
+
+.association {
+  padding-top: 80px;
+}
+
+@media (max-width: 1199px) {
+  .banner {
+    padding-left: var(--container-padding);
+  }
+
+  .banner__media {
+    width: 320px;
+  }
+
+  .banner__content {
+    flex: 1;
+    width: auto;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .banner__media {
+    width: 100%;
+  }
+
+  .geography .banner__media img {
+    aspect-ratio: 343 / 287;
+  }
+
+  .association .banner__media img {
+    aspect-ratio: 343 / 322;
+  }
+
+  .banner__content {
+    gap: 24px;
+  }
+
+  .banner__btn {
+    width: 100%;
+  }
+
+  .banner br {
+    display: none;
+  }
+
+  .geography,
+  .association {
+    padding-top: 48px;
+  }
+}
+
+/* ==========================================================================
+   Карта (заглушка, карта будет подключена отдельно)
+   ========================================================================== */
+
+.map {
+  margin-top: 128px;
+}
+
+.map__placeholder {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  height: 600px;
+  background-color: var(--color-map-placeholder);
+}
+
+@media (max-width: 767px) {
+  .map {
+    margin-top: 54px;
+  }
+
+  .map__placeholder {
+    height: 612px;
+  }
+}
+
+/* ==========================================================================
+   Проекты и партнёры
+   ========================================================================== */
+
+.projects {
+  padding-top: 64px;
+}
+
+.partners {
+  padding-top: 64px;
+}
+
+@media (max-width: 767px) {
+  .projects {
+    padding-top: 48px;
+  }
+
+  .partners {
+    padding-top: 48px;
+  }
+
+  .partners .section-head {
+    margin-bottom: 24px;
+  }
+}
+
+/* ==========================================================================
+   Подвал
+   ========================================================================== */
+
+.footer {
+  margin-top: 128px;
+  color: var(--color-background-100);
+  background-color: var(--color-main-900);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-top: 38px;
+  padding-bottom: 32px;
+}
+
+.footer__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer__main {
+  display: flex;
+  align-items: flex-start;
+  gap: 136px;
+}
+
+.footer__logo {
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.footer__logo img {
+  width: 100%;
+  height: auto;
+}
+
+.footer__nav {
+  display: flex;
+  gap: 83px;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__link {
+  font-family: var(--label-small-font-family);
+  font-size: var(--label-small-font-size);
+  font-weight: var(--label-small-font-weight);
+  line-height: var(--label-small-line-height);
+  color: var(--buttons-footer-default);
+  transition: color var(--transition);
+}
+
+.footer__link:hover {
+  color: var(--buttons-footer-hover);
+}
+
+.footer__link:active {
+  color: var(--buttons-footer-pressed);
+}
+
+.footer__social {
+  width: 64px;
+  height: 64px;
+}
+
+.footer__bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer__copy {
+  max-width: 424px;
+  font-family: var(--label-small-font-family);
+  font-size: var(--label-small-font-size);
+  line-height: var(--label-small-line-height);
+}
+
+.footer__legal {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+@media (max-width: 1199px) {
+  .footer__main {
+    gap: 48px;
+  }
+
+  .footer__nav {
+    gap: 40px;
+  }
+
+  .footer__legal {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer__bottom {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    margin-top: 48px;
+  }
+
+  .footer__inner {
+    gap: 32px;
+    padding-top: 32px;
+  }
+
+  /* Логотип и VK в одну строку, навигация переносится ниже на всю ширину */
+  .footer__top {
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 32px;
+  }
+
+  .footer__main {
+    display: contents;
+  }
+
+  .footer__logo {
+    width: 152px;
+  }
+
+  .footer__social {
+    width: 48px;
+    height: 48px;
+  }
+
+  .footer__nav {
+    order: 1;
+    width: 100%;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .footer__list {
+    gap: 18px;
+  }
+
+  .footer__bottom {
+    gap: 20px;
+  }
+
+  .footer__legal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer__legal .link-underlined {
+    border-bottom-width: 1px;
+  }
+}

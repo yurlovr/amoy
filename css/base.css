@@ -1,0 +1,130 @@
+/* ==========================================================================
+   Сброс и базовые стили
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+  color: var(--color-text-900);
+  background: var(--color-background-100);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-main-800);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Контейнер: контент максимум 1440px, фон секций тянется на всю ширину */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Показ / скрытие по брейкпоинтам */
+@media (min-width: 768px) {
+  .only-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .only-desktop {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Типографика
+   ========================================================================== */
+
+.title-h2 {
+  font-family: var(--h2-font-family);
+  font-size: var(--h2-font-size);
+  font-weight: var(--h2-font-weight);
+  line-height: var(--h2-line-height);
+  text-transform: uppercase;
+}
+
+.title-h5 {
+  font-family: var(--h5-font-family);
+  font-size: var(--h5-font-size);
+  font-weight: var(--h5-font-weight);
+  line-height: var(--h5-line-height);
+}
+
+.text-large {
+  font-family: var(--body-large-font-family);
+  font-size: var(--body-large-font-size);
+  font-weight: var(--body-large-font-weight);
+  line-height: var(--body-large-line-height);
+  text-transform: uppercase;
+}

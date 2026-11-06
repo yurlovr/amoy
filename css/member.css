@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Карточка члена Ассоциации (member.html)
+   Слайдер новостей внизу — стили из css/detail.css (.related)
+   ========================================================================== */
+
+.member {
+  padding-top: 48px;
+}
+
+.member__main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.member__info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 648px;
+  min-width: 0;
+}
+
+.member__title {
+  font-family: var(--body-bold-large-font-family);
+  font-size: var(--body-bold-large-font-size);
+  font-weight: var(--body-bold-large-font-weight);
+  line-height: var(--body-bold-large-line-height);
+}
+
+.member__photo {
+  flex-shrink: 0;
+  width: 536px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+}
+
+/* Реквизиты: подпись слева, значение справа */
+.member__props {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--body-small-font-family);
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+}
+
+.member__row {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 486px);
+  gap: 2px;
+}
+
+.member__row dt {
+  font-weight: var(--body-small-bold-font-weight);
+}
+
+.member__row dd {
+  margin: 0;
+}
+
+/* Стрелки «предыдущий / следующий член» */
+.member__nav {
+  display: flex;
+  gap: 4px;
+  margin-top: 64px;
+}
+
+@media (max-width: 1199px) {
+  .member__photo {
+    width: 40%;
+    height: auto;
+    aspect-ratio: 536 / 340;
+  }
+}
+
+@media (max-width: 767px) {
+  .member {
+    padding-top: 32px;
+  }
+
+  .member__main {
+    flex-direction: column-reverse;
+    gap: 24px;
+  }
+
+  .member__info {
+    width: 100%;
+    gap: 24px;
+  }
+
+  .member__title {
+    font-size: 20px;
+  }
+
+  .member__photo {
+    width: 100%;
+  }
+
+  .member__row {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .member__nav {
+    margin-top: 32px;
+  }
+}

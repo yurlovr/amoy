@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Переменные проекта (дизайн-токены из Figma «АМОУ»)
+   Имена повторяют переменные Figma: Color/Main/800 -> --color-main-800 и т.д.
+   ========================================================================== */
+
+:root {
+  /* ---------- Цвета: основные ---------- */
+  --color-main-500: #fbb4e6;
+  --color-main-800: #c02e95;
+  --color-main-900: #98056d;
+
+  --color-blue-500: #5c64d2;
+  --color-blue-800: #1b2062;
+
+  --color-orange-500: #fbaa9c;
+
+  --color-text-900: #151515;
+
+  --color-background-100: #ffffff;
+  --color-background-200: #eeeced;
+  --color-background-300: #aeb0c7;
+  --color-background-400: #707184;
+
+  /* Розовая палитра, используется в состояниях кнопок */
+  --color-pink-200: #fbb4e6;
+  --color-pink-400: #ea84cc;
+  --color-pink-600: #ce51aa;
+
+  /* ---------- Цвета: кнопки ---------- */
+  --buttons-light-default: #c02e95;
+  --buttons-light-hover: #ce51aa;
+  --buttons-light-pressed: #98056d;
+  --buttons-light-disabled: #fbb4e6;
+
+  --buttons-dark-default: #151515;
+  --buttons-dark-hover: #c02e95;
+  --buttons-dark-pressed: #98056d;
+  --buttons-dark-disabled: #151515;
+
+  --buttons-secondary-default: #151515;
+  --buttons-secondary-hover: #ce51aa;
+  --buttons-secondary-active: #c02e95;
+
+  --buttons-selection-default: #151515;
+  --buttons-selection-hover: #ce51aa;
+  --buttons-selection-active: #c02e95;
+
+  --buttons-arrow-default: #151515;
+  --buttons-arrow-hover: #c02e95;
+  --buttons-arrow-pressed: #98056d;
+  --buttons-arrow-disabled: #151515;
+
+  --buttons-search-default: #c02e95;
+  --buttons-search-hover: #ce51aa;
+  --buttons-search-pressed: #98056d;
+
+  --buttons-contact-default: #151515;
+  --buttons-contact-hover: #c02e95;
+  --buttons-contact-pressed: #98056d;
+
+  --buttons-social-default: #c02e95;
+  --buttons-social-hover: #ce51aa;
+  --buttons-social-pressed: #98056d;
+  --buttons-social-default-light: #ffffff;
+  --buttons-social-hover-light: #fbb4e6;
+  --buttons-social-pressed-light: #ea84cc;
+
+  --buttons-footer-default: #ffffff;
+  --buttons-footer-hover: #fbb4e6;
+  --buttons-footer-pressed: #ea84cc;
+
+  --buttons-text-underlined-default-light: #ffffff;
+
+  --buttons-map-marker-default: #c02e95;
+
+  --buttons-menu-default: #151515;
+  --buttons-menu-hover: #ea84cc;
+
+  --buttons-link-default: #c02e95;
+  --buttons-link-hover: #ce51aa;
+
+  --buttons-sort-default: #eeeced;
+  --buttons-sort-active: #ea84cc;
+  --buttons-sort-letters: #eeeced;
+
+  --buttons-doc-default: #eeeced;
+  --buttons-doc-hover: #fbb4e6;
+
+  --buttons-icon-doc-default: #fbb4e6;
+  --buttons-icon-doc-hover: #ea84cc;
+  --buttons-icon-doc-pressed: #ce51aa;
+
+  --buttons-pagination-default: #151515;
+  --buttons-pagination-hover: #ce51aa;
+  --buttons-pagination-active: #c02e95;
+  --buttons-pagination-disabled: #aeb0c7;
+
+  --buttons-breadcrumbs-default: #ea84cc;
+  --buttons-breadcrumbs-hover: #ce51aa;
+  --buttons-breadcrumbs-active: #aeb0c7;
+
+  /* ---------- Цвета: макет без отдельных переменных ---------- */
+  --color-project-card: #cbd0ff;
+  --color-map-placeholder: #f2c8ee;
+  --hero-gradient: linear-gradient(190deg, rgba(7, 0, 176, 0) 43.7%, #0700b0 88%);
+  --hero-gradient-mobile: linear-gradient(180deg, rgba(16, 5, 79, 0.44) 0%, rgba(7, 0, 176, 0.38) 40%, #0700b0 80%, #0700b0 100%);
+
+  /* ---------- Шрифты ---------- */
+  --font-unbounded: "Unbounded", sans-serif;
+  --font-golos: "Golos Text", sans-serif;
+
+  /* Heading/H2 — Unbounded Black 64 / 1.16 */
+  --h2-font-family: var(--font-unbounded);
+  --h2-font-size: 64px;
+  --h2-font-weight: 900;
+  --h2-line-height: 1.16;
+
+  /* Heading/H3 — Unbounded Bold 36 / 1.16 */
+  --h3-font-family: var(--font-unbounded);
+  --h3-font-size: 36px;
+  --h3-font-weight: 700;
+  --h3-line-height: 1.16;
+
+  /* Heading/H5 — Unbounded Medium 24 / 1.24 */
+  --h5-font-family: var(--font-unbounded);
+  --h5-font-size: 24px;
+  --h5-font-weight: 500;
+  --h5-line-height: 1.24;
+
+  /* Heading/H6 — Unbounded Bold 18 / 1.44 */
+  --h6-font-family: var(--font-unbounded);
+  --h6-font-size: 18px;
+  --h6-font-weight: 700;
+  --h6-line-height: 1.44;
+
+  /* Body/Medium/Large — Golos Text Regular 24 / 1.32 */
+  --body-large-font-family: var(--font-golos);
+  --body-large-font-size: 24px;
+  --body-large-font-weight: 400;
+  --body-large-line-height: 1.32;
+
+  /* Body/Bold/Large — Golos Text SemiBold 24 / 1.4 */
+  --body-bold-large-font-family: var(--font-golos);
+  --body-bold-large-font-size: 24px;
+  --body-bold-large-font-weight: 600;
+  --body-bold-large-line-height: 1.4;
+
+  /* Body/Regular/Body — Golos Text Regular 18 / 1.4 */
+  --body-font-family: var(--font-golos);
+  --body-font-size: 18px;
+  --body-font-weight: 400;
+  --body-line-height: 1.4;
+
+  /* Body/Regular/Small — Golos Text Regular 16 / 1.4 */
+  --body-small-font-family: var(--font-golos);
+  --body-small-font-size: 16px;
+  --body-small-font-weight: 400;
+  --body-small-line-height: 1.4;
+
+  /* Body/Bold/Small — Golos Text Medium 16 / 1.4 */
+  --body-small-bold-font-weight: 500;
+
+  /* Label/Medium — Unbounded Regular 16 / 1.16 */
+  --label-medium-font-family: var(--font-unbounded);
+  --label-medium-font-size: 16px;
+  --label-medium-font-weight: 400;
+  --label-medium-line-height: 1.16;
+
+  /* Label/Small — Unbounded Regular 15 / 20px */
+  --label-small-font-family: var(--font-unbounded);
+  --label-small-font-size: 15px;
+  --label-small-font-weight: 400;
+  --label-small-line-height: 20px;
+
+  /* Label/XSmall — Unbounded Regular 14 / 1.16 */
+  --label-xsmall-font-family: var(--font-unbounded);
+  --label-xsmall-font-size: 14px;
+  --label-xsmall-font-weight: 400;
+  --label-xsmall-line-height: 1.16;
+
+  /* Label/XXSmall — Unbounded Medium 12 / 1.4 */
+  --label-xxsmall-font-family: var(--font-unbounded);
+  --label-xxsmall-font-size: 12px;
+  --label-xxsmall-font-weight: 500;
+  --label-xxsmall-line-height: 1.4;
+
+  /* ---------- Отступы, радиусы, эффекты ---------- */
+  --spacing-1x: 4px;
+
+  --radius-card: 16px;
+  --radius-select: 8px;
+  --radius-button: 32px;
+  --radius-arrow: 80px;
+  --radius-step: 63px 24px 24px 63px;
+  --radius-doc: 40px 8px 8px 40px;
+
+  --shadow-card-hover: -7px -5px 17px 0 var(--color-orange-500);
+  --blur-arrow: 64px;
+
+  --transition: 0.2s ease;
+
+  /* ---------- Сетка ---------- */
+  --container-width: 1440px;
+  --container-padding: 60px;
+  --card-width: 312px;
+  --cards-gap: 24px;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --container-padding: 32px;
+    --h2-font-size: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --container-padding: 16px;
+    --h2-font-size: 28px;
+    --body-large-font-size: 18px;
+    --label-xsmall-font-size: 11px;
+    --cards-gap: 8px;
+  }
+}

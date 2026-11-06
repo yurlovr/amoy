@@ -1,0 +1,676 @@
+/* ==========================================================================
+   Компоненты (страница компонентов в Figma)
+   ========================================================================== */
+
+/* ---------- Кнопка с текстом ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  text-align: center;
+  white-space: nowrap;
+  color: var(--color-background-100);
+  border-radius: var(--radius-button);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.btn:disabled,
+.btn.is-disabled {
+  pointer-events: none;
+}
+
+/* Розовая (button_light) */
+.btn--light {
+  background-color: var(--buttons-light-default);
+}
+
+.btn--light:hover {
+  background-color: var(--buttons-light-hover);
+}
+
+.btn--light:active {
+  background-color: var(--buttons-light-pressed);
+}
+
+.btn--light:disabled,
+.btn--light.is-disabled {
+  background-color: var(--buttons-light-disabled);
+}
+
+/* Тёмная (button_dark) */
+.btn--dark {
+  background-color: var(--buttons-dark-default);
+}
+
+.btn--dark:hover {
+  background-color: var(--buttons-dark-hover);
+}
+
+.btn--dark:active {
+  background-color: var(--buttons-dark-pressed);
+}
+
+.btn--dark:disabled,
+.btn--dark.is-disabled {
+  background-color: var(--buttons-dark-disabled);
+  color: var(--color-background-400);
+}
+
+/* Серая маленькая (button_2: «Все события») */
+.btn--secondary {
+  padding: 12px 24px;
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+  color: var(--buttons-secondary-default);
+  background-color: var(--color-background-200);
+}
+
+.btn--secondary:hover {
+  color: var(--buttons-secondary-hover);
+}
+
+.btn--secondary:active {
+  color: var(--buttons-secondary-active);
+}
+
+/* ---------- Круглые кнопки-иконки 48×48 ---------- */
+.btn-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.btn-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Контакты: цвет «облачка» задаётся через color (fill="currentColor" в svg) */
+.btn-icon--contact {
+  color: var(--buttons-contact-default);
+}
+
+.btn-icon--contact svg {
+  width: 48px;
+  height: 48px;
+}
+
+.btn-icon--contact:hover {
+  color: var(--buttons-contact-hover);
+}
+
+.btn-icon--contact:active {
+  color: var(--buttons-contact-pressed);
+}
+
+/* Поиск и меню */
+.btn-icon--search,
+.btn-icon--menu {
+  background-color: var(--buttons-search-default);
+}
+
+.btn-icon--search:hover,
+.btn-icon--menu:hover {
+  background-color: var(--buttons-search-hover);
+}
+
+.btn-icon--search:active,
+.btn-icon--menu:active {
+  background-color: var(--buttons-search-pressed);
+}
+
+/* ---------- Соцсеть (ВКонтакте), светлый вариант ---------- */
+.btn-social {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  color: var(--buttons-social-default-light);
+  transition: color var(--transition);
+}
+
+.btn-social svg {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-social:hover {
+  color: var(--buttons-social-hover-light);
+}
+
+.btn-social:active {
+  color: var(--buttons-social-pressed-light);
+}
+
+/* ---------- Стрелки слайдера ---------- */
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 48px;
+  background-color: var(--buttons-arrow-default);
+  border-radius: var(--radius-arrow);
+  -webkit-backdrop-filter: blur(var(--blur-arrow));
+  backdrop-filter: blur(var(--blur-arrow));
+  transition: background-color var(--transition);
+}
+
+.btn-arrow img {
+  width: 11px;
+  height: 18px;
+}
+
+.btn-arrow:hover {
+  background-color: var(--buttons-arrow-hover);
+}
+
+.btn-arrow:active {
+  background-color: var(--buttons-arrow-pressed);
+}
+
+.btn-arrow:disabled,
+.btn-arrow.swiper-button-disabled {
+  background-color: var(--buttons-arrow-disabled);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ---------- Подчёркнутая текстовая ссылка (футер) ---------- */
+.link-underlined {
+  display: inline-flex;
+  padding-bottom: 6px;
+  font-family: var(--label-xsmall-font-family);
+  font-size: var(--label-xsmall-font-size);
+  font-weight: var(--label-xsmall-font-weight);
+  line-height: var(--label-xsmall-line-height);
+  text-transform: uppercase;
+  color: var(--buttons-text-underlined-default-light);
+  border-bottom: 2px solid currentColor;
+  transition: color var(--transition);
+}
+
+.link-underlined:hover {
+  color: var(--buttons-footer-hover);
+}
+
+.link-underlined:active {
+  color: var(--buttons-footer-pressed);
+}
+
+/* ---------- Ссылка в тексте ---------- */
+.text-link {
+  color: var(--buttons-link-default);
+  transition: color var(--transition);
+}
+
+.text-link:hover {
+  color: var(--buttons-link-hover);
+}
+
+/* ==========================================================================
+   Хлебные крошки
+   ========================================================================== */
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--label-xxsmall-font-family);
+  font-size: var(--label-xxsmall-font-size);
+  font-weight: var(--label-xxsmall-font-weight);
+  line-height: var(--label-xxsmall-line-height);
+}
+
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+/* Разделитель «/» перед каждым пунктом, кроме первого */
+.breadcrumbs__item + .breadcrumbs__item::before {
+  content: "/";
+  font-family: var(--body-small-font-family);
+  font-size: var(--body-small-font-size);
+  font-weight: 400;
+  color: var(--buttons-breadcrumbs-active);
+}
+
+.breadcrumbs__link {
+  color: var(--buttons-breadcrumbs-default);
+  transition: color var(--transition);
+}
+
+.breadcrumbs__link:hover {
+  color: var(--buttons-breadcrumbs-hover);
+}
+
+/* Длинное название текущей страницы обрезается многоточием */
+.breadcrumbs__item--current {
+  max-width: 320px;
+}
+
+.breadcrumbs__current {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--buttons-breadcrumbs-active);
+}
+
+/* ==========================================================================
+   Кнопка-документ (button_doc): иконка + название, по клику скачивание
+   ========================================================================== */
+
+.doc-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 16px 8px 8px;
+  font-family: var(--body-small-font-family);
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+  color: var(--color-text-900);
+  border-radius: var(--radius-doc);
+  background-color: var(--buttons-doc-default);
+  transition: background-color var(--transition);
+}
+
+.doc-link__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--buttons-icon-doc-default);
+  transition: background-color var(--transition);
+}
+
+.doc-link__icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.doc-link:hover {
+  background-color: var(--buttons-doc-hover);
+}
+
+.doc-link:hover .doc-link__icon {
+  background-color: var(--buttons-icon-doc-hover);
+}
+
+.doc-link:active .doc-link__icon {
+  background-color: var(--buttons-icon-doc-pressed);
+}
+
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   Переключатель (button_selection): «Новости / События»
+   ========================================================================== */
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tab {
+  padding: 6px 12px;
+  font-family: var(--body-small-font-family);
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+  color: var(--buttons-selection-default);
+  border-radius: var(--radius-select);
+  background-color: var(--color-background-200);
+  transition: color var(--transition);
+}
+
+.tab:hover {
+  color: var(--buttons-selection-hover);
+}
+
+.tab.is-active {
+  color: var(--buttons-selection-active);
+}
+
+/* ==========================================================================
+   Пагинация
+   Классы состояний: .is-active — текущая страница,
+   .is-disabled — стрелка без перехода (нет предыдущей / следующей страницы).
+   На мобильном видны только стрелки и текущая страница.
+   ========================================================================== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-1x);
+}
+
+.pagination__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-family: var(--body-small-font-family);
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+  color: var(--buttons-pagination-default);
+  border-radius: var(--radius-select);
+  transition: color var(--transition), background-color var(--transition);
+}
+
+a.pagination__item:hover {
+  color: var(--buttons-pagination-hover);
+}
+
+.pagination__item.is-active {
+  color: var(--color-background-100);
+  background-color: var(--buttons-pagination-active);
+}
+
+.pagination__item svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pagination__item.is-disabled {
+  color: var(--buttons-pagination-disabled);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .pagination {
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .pagination__item:not(.pagination__arrow):not(.is-active) {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Заголовок раздела: «События» + «Все события»
+   ========================================================================== */
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 46px;
+  margin-bottom: 32px;
+}
+
+/* ==========================================================================
+   Ряд карточек: на десктопе сетка, на мобильном горизонтальный скролл
+   ========================================================================== */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--cards-gap);
+  align-items: start;
+}
+
+@media (max-width: 1199px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .cards {
+    display: flex;
+    margin: 0 calc(var(--container-padding) * -1);
+    padding: 0 var(--container-padding);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--container-padding);
+    scrollbar-width: none;
+  }
+
+  .cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cards > * {
+    flex: 0 0 var(--card-width);
+    scroll-snap-align: start;
+  }
+}
+
+/* ==========================================================================
+   Карточка события / новости
+   ========================================================================== */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.card__image {
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background-color: var(--color-background-200);
+  transition: box-shadow var(--transition);
+}
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card:hover .card__image {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card__category,
+.card__date {
+  font-family: var(--label-xxsmall-font-family);
+  font-size: var(--label-xxsmall-font-size);
+  font-weight: var(--label-xxsmall-font-weight);
+  line-height: var(--label-xxsmall-line-height);
+}
+
+.card__category {
+  color: var(--color-background-300);
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card__text {
+  font-family: var(--body-small-font-family);
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+}
+
+.card__date {
+  color: var(--color-blue-500);
+}
+
+/* ==========================================================================
+   Карточка проекта
+   ========================================================================== */
+
+.project-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  height: 360px;
+  padding: 24px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background-color: var(--color-project-card);
+  transition: box-shadow var(--transition);
+}
+
+/* Под будущую картинку проекта */
+.project-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card__title {
+  position: relative;
+  max-width: 264px;
+  font-family: var(--h6-font-family);
+  font-size: var(--h6-font-size);
+  font-weight: var(--h6-font-weight);
+  line-height: var(--h6-line-height);
+  text-transform: uppercase;
+  color: var(--color-background-100);
+}
+
+.project-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ==========================================================================
+   Карточка партнёра
+   ========================================================================== */
+
+.partner-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 178px;
+  padding: 0 8px;
+  border-radius: var(--radius-card);
+  background-color: var(--color-background-100);
+}
+
+.partner-card img {
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .partners .cards > * {
+    flex-basis: 283px;
+  }
+
+  .partner-card {
+    height: 124px;
+  }
+}
+
+/* ==========================================================================
+   Цифры: 101 / 48 / 3
+   ========================================================================== */
+
+.stats {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  text-transform: uppercase;
+}
+
+.stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stats__value {
+  font-family: var(--font-unbounded);
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1.16;
+}
+
+.stats__label {
+  font-family: var(--label-medium-font-family);
+  font-size: var(--label-medium-font-size);
+  font-weight: var(--label-medium-font-weight);
+  line-height: var(--label-medium-line-height);
+}
+
+/* Уменьшенный вариант для баннера «География» */
+.stats--small {
+  gap: 60px;
+}
+
+.stats--small .stats__item {
+  gap: 6px;
+}
+
+.stats--small .stats__value {
+  font-size: 59.387px;
+}
+
+.stats--small .stats__label {
+  font-size: 11.877px;
+}
+
+@media (max-width: 1199px) {
+  .stats {
+    gap: 48px;
+  }
+
+  .stats__value {
+    font-size: 64px;
+  }
+}
+
+@media (max-width: 767px) {
+  .stats,
+  .stats--small {
+    gap: 16px;
+  }
+
+  .stats__item,
+  .stats--small .stats__item {
+    flex: 1 1 0;
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .stats__value,
+  .stats--small .stats__value {
+    font-size: 36px;
+    line-height: normal;
+  }
+
+  .stats__label,
+  .stats--small .stats__label {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+}
