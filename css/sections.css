@@ -605,9 +605,9 @@
 
 .select {
   position: absolute;
-  top: 5%;
+  top: 18px;
+  right: calc(max(0px, (100% - var(--container-width)) / 2) + 16px);
   z-index: 105;
-  right: 2%;
   width: 200px;
 }
 
