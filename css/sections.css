@@ -497,15 +497,11 @@
   color: var(--color-text-900);
   border-radius: 20px;
   background-color: var(--color-background-100);
-  transition: box-shadow var(--transition);
+  box-shadow: 0 0 5.55px rgba(0, 0, 0, 0.25);
 }
 
 .map-card[hidden] {
   display: none;
-}
-
-.map-card:hover {
-  box-shadow: var(--shadow-card-hover);
 }
 
 .map-card__image {
@@ -523,8 +519,13 @@
   transition: color var(--transition);
 }
 
+/* Состояния по макету: меняется только цвет названия */
 .map-card:hover .map-card__name {
-  color: var(--buttons-link-hover);
+  color: var(--color-main-800);
+}
+
+.map-card:active .map-card__name {
+  color: var(--color-main-900);
 }
 
 /*
@@ -634,10 +635,6 @@
     padding: 16px 16px 24px;
     border-radius: 20px 20px 0 0;
     transform: translateX(-50%);
-  }
-
-  .map-card:hover {
-    box-shadow: none;
   }
 
   .map-card__image {
