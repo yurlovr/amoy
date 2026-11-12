@@ -1286,9 +1286,10 @@ function init() {
     map.controls.remove('zoomControl');
     map.controls.add(zoomInBtn);
     map.controls.add(zoomOutBtn);
+
     if (width < 768) {
       map.behaviors.disable('drag');
-      map.behaviors.enabled('multiTouch');
+      map.behaviors.enable('multiTouch');
     }
   }
 
