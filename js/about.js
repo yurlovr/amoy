@@ -164,14 +164,42 @@
     const el = root.querySelector('.swiper');
     if (!el) return;
 
-    const slidesCount = el.querySelectorAll('.swiper-slide').length;
+    const slides = [...el.querySelectorAll('.swiper-slide')];
+    const slidesCount = slides.length;
     const initial = parseInt(root.dataset.initial, 10);
+
+    /*
+      Бесконечная прокрутка по кругу. Встроенный loop Swiper'а с центрированными
+      слайдами разной ширины теряет нажатия на стрелки, поэтому петля своя:
+      три одинаковых набора руководителей, показываем средний, а после каждой
+      прокрутки без анимации возвращаемся в средний набор — глазу это незаметно.
+      Копии скрыты от экранных дикторов, чтобы список не читался трижды.
+    */
+    const wrapper = el.querySelector('.swiper-wrapper');
+
+    el.querySelectorAll('img').forEach((img) => { img.loading = 'eager'; });
+
+    const makeCopy = (slide) => {
+      const copy = slide.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      copy.setAttribute('tabindex', '-1');
+      return copy;
+    };
+    slides.forEach((slide) => wrapper.appendChild(makeCopy(slide)));
+    [...slides].reverse().forEach((slide) => wrapper.prepend(makeCopy(slide)));
+
+    // Если ушли в первый или третий набор — переходим на тот же слайд в среднем
+    const keepInMiddle = (swiper) => {
+      const index = swiper.activeIndex;
+      if (index < slidesCount) swiper.slideTo(index + slidesCount, 0, false);
+      else if (index >= slidesCount * 2) swiper.slideTo(index - slidesCount, 0, false);
+    };
 
     new Swiper(el, {
       slidesPerView: 'auto',
       centeredSlides: true,
-      initialSlide: Number.isNaN(initial) ? Math.floor(slidesCount / 2) : initial,
-      loop: true,
+      initialSlide: slidesCount + (Number.isNaN(initial) ? Math.floor(slidesCount / 2) : initial),
+      loop: false,
       autoplay: false,
       spaceBetween: 0,
       watchSlidesProgress: true,
@@ -186,6 +214,9 @@
       },
       on: {
         progress: applyLeaderTransforms,
+        transitionEnd: keepInMiddle,
+        // Страховка: браузер иногда не сообщает об окончании анимации
+        slideChange: (swiper) => setTimeout(() => keepInMiddle(swiper), swiper.params.speed + 50),
         resize: applyLeaderTransforms,
         breakpoint: (swiper) => setTimeout(() => applyLeaderTransforms(swiper), 0),
         setTransition: (swiper, duration) => {
