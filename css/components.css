@@ -611,6 +611,16 @@ a.pagination__item:hover {
 
 .partner-card img {
   height: auto;
+  transition: transform var(--transition);
+}
+
+/* Карточка — ссылка на сайт партнёра: при наведении логотип немного увеличивается */
+a.partner-card {
+  cursor: pointer;
+}
+
+a.partner-card:hover img {
+  transform: scale(1.1);
 }
 
 @media (max-width: 767px) {
