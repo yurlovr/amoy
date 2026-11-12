@@ -285,7 +285,7 @@
   color: var(--color-text-900);
   border-radius: var(--radius-doc);
   background-color: var(--buttons-doc-default);
-  transition: background-color var(--transition);
+  transition: background-color var(--transition), color var(--transition);
 }
 
 .doc-link__icon {
@@ -305,12 +305,30 @@
   height: 20px;
 }
 
+/* Значок загрузки показываем вместо значка файла при наведении и нажатии */
+.doc-link__download {
+  display: none;
+}
+
+/* Состояния по макету: фон строки не меняется, меняются кружок, значок и (при нажатии) текст */
 .doc-link:hover {
   background-color: var(--buttons-doc-hover);
 }
 
 .doc-link:hover .doc-link__icon {
   background-color: var(--buttons-icon-doc-hover);
+}
+
+.doc-link:hover .doc-link__icon img:not(.doc-link__download) {
+  display: none;
+}
+
+.doc-link:hover .doc-link__download {
+  display: block;
+}
+
+.doc-link:active {
+  color: var(--color-main-900);
 }
 
 .doc-link:active .doc-link__icon {
