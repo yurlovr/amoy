@@ -1261,7 +1261,11 @@ function init() {
     if (minLat > one) minLat = one;
     if (maxLat < one) maxLat = one;
 
-    marker.events.add('click', () => showCard(item, marker));
+    marker.events.add('click', () => {
+      setTimeout(() => {
+        showCard(item, marker)
+      }, 0);
+    });
 
     markers.push(marker)
   })
