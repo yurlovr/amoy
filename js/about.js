@@ -171,7 +171,7 @@
       slidesPerView: 'auto',
       centeredSlides: true,
       initialSlide: Number.isNaN(initial) ? Math.floor(slidesCount / 2) : initial,
-      loop: false,
+      loop: true,
       autoplay: false,
       spaceBetween: 0,
       watchSlidesProgress: true,
