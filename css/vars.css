@@ -197,7 +197,7 @@
   --radius-step: 63px 24px 24px 63px;
   --radius-doc: 40px 8px 8px 40px;
 
-  --shadow-card-hover: -7px -5px 17px 0 var(--color-orange-500);
+  --shadow-card-hover: -7px -5px 17px 0 var(--color-main-600);
   --blur-arrow: 64px;
 
   --transition: 0.2s ease;
