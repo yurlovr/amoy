@@ -9,7 +9,7 @@
   position: fixed;
   inset: 0;
   z-index: 45;
-  padding: 192px var(--container-padding) 48px;
+  padding: 115px var(--container-padding) 48px;
   background-color: rgba(21, 21, 21, 0.6);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
@@ -25,7 +25,7 @@
 
 .search__close {
   position: fixed;
-  top: 64px;
+  top: 35px;
   right: max(var(--container-padding), calc((100vw - var(--container-width)) / 2 + 64px));
   display: flex;
   width: 42px;
@@ -130,11 +130,13 @@
   display: none;
 }
 
+/* Видно 4 результата целиком, пятый немного выглядывает — подсказка, что список прокручивается */
 .search__list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   min-height: 0;
+  max-height: 287px;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -149,7 +151,7 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  gap: 8px;
+  gap: 4px;
   max-width: 768px;
   min-width: 0;
 }
@@ -283,10 +285,12 @@
 
   .search__list {
     gap: 24px;
+    max-height: none;
   }
 
   /* На мобильном название переносится целиком, между результатами — линия */
   .search__item {
+    gap: 8px;
     max-width: none;
     padding: 0 16px 12px;
     border-bottom: 1px solid var(--color-background-200);
