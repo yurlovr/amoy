@@ -1288,6 +1288,7 @@ function init() {
     map.controls.add(zoomOutBtn);
     if (width < 768) {
       map.behaviors.disable('drag');
+      map.behaviors.enabled('multiTouch');
     }
   }
 
@@ -1306,16 +1307,6 @@ function init() {
   */
   const mapEl = document.getElementById('map');
   let createdHidden = mapEl.offsetParent === null;
-
-  map.events.add('boundschange', function (event) {
-    const newZoom = event.get('newZoom');
-    if (newZoom >= 7 && width < 768) {
-      map.behaviors.enable('drag');
-    }
-    if (newZoom < 7 && width < 768) {
-      map.behaviors.disable('drag');
-    }
-});
 
   document.addEventListener('tabs:change', (event) => {
     if (event.detail.name !== 'map') {
