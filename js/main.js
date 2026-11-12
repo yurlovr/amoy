@@ -1,12 +1,19 @@
-(function () {
+(() => {
   'use strict';
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
+  const params = new URLSearchParams(window.location.search);
 
   /* ------------------------------------------------------------------
      Главный слайдер: бесконечный, автопрокрутка каждые 5 секунд.
      Меняются только фоновые картинки, текст стоит на месте.
      ------------------------------------------------------------------ */
-  function initHeroSlider() {
-    var el = document.querySelector('.js-hero-slider');
+  const initHeroSlider = () => {
+    const el = document.querySelector('.js-hero-slider');
     if (!el || typeof Swiper === 'undefined') return;
 
     new Swiper(el, {
@@ -16,127 +23,111 @@
       fadeEffect: { crossFade: true },
       autoplay: {
         delay: 5000,
-        disableOnInteraction: false
+        disableOnInteraction: false,
       },
       navigation: {
         prevEl: '.js-hero-prev',
-        nextEl: '.js-hero-next'
+        nextEl: '.js-hero-next',
       },
       pagination: {
         el: '.js-hero-pagination',
-        clickable: true
+        clickable: true,
       },
       a11y: {
         prevSlideMessage: 'Предыдущий слайд',
         nextSlideMessage: 'Следующий слайд',
-        paginationBulletMessage: 'Перейти к слайду {{index}}'
-      }
+        paginationBulletMessage: 'Перейти к слайду {{index}}',
+      },
     });
-  }
+  };
 
-  /* ------------------------------------------------------------------
-     Временные обработчики: кнопки с data-log пишут сообщение в консоль.
-     Пример: <button data-log="Поиск">
-     ------------------------------------------------------------------ */
-  function initLogButtons() {
-    document.addEventListener('click', function (event) {
-      var target = event.target.closest('[data-log]');
+  const initLogButtons = () => {
+    document.addEventListener('click', (event) => {
+      const target = event.target.closest('[data-log]');
       if (!target) return;
 
       event.preventDefault();
-      console.log('[АМОУ] Нажата кнопка: ' + target.getAttribute('data-log'));
     });
-  }
+  };
 
   /* ------------------------------------------------------------------
      Мобильное меню
      ------------------------------------------------------------------ */
-  function initMobileMenu() {
-    var menu = document.querySelector('.js-mobile-menu');
-    var openBtn = document.querySelector('.js-menu-open');
+  const initMobileMenu = () => {
+    const menu = document.querySelector('.js-mobile-menu');
+    const openBtn = document.querySelector('.js-menu-open');
     if (!menu || !openBtn) return;
 
-    function open() {
-      menu.classList.add('is-open');
-      menu.setAttribute('aria-hidden', 'false');
-      openBtn.setAttribute('aria-expanded', 'true');
-      document.body.classList.add('is-locked');
-    }
+    const setOpen = (isOpen) => {
+      menu.classList.toggle('is-open', isOpen);
+      menu.setAttribute('aria-hidden', String(!isOpen));
+      openBtn.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('is-locked', isOpen);
+    };
 
-    function close() {
-      menu.classList.remove('is-open');
-      menu.setAttribute('aria-hidden', 'true');
-      openBtn.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('is-locked');
-    }
+    openBtn.addEventListener('click', () => setOpen(true));
 
-    openBtn.addEventListener('click', open);
-
-    menu.addEventListener('click', function (event) {
-      if (event.target.closest('.js-menu-close') || event.target.closest('a')) {
-        close();
-      }
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('.js-menu-close, a')) setOpen(false);
     });
 
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && menu.classList.contains('is-open')) close();
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.classList.contains('is-open')) setOpen(false);
     });
 
     // Меню скрывается на десктопе — снимаем блокировку прокрутки
-    window.matchMedia('(min-width: 1024px)').addEventListener('change', function (mq) {
-      if (mq.matches) close();
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', (mq) => {
+      if (mq.matches) setOpen(false);
     });
-  }
+  };
 
   /* ------------------------------------------------------------------
-     Вкладки «Новости / События».
+     Вкладки «Новости / События», «Список / Карта».
      Кнопки: [data-tab="news"], панели: [data-panel="news"].
      Открыть нужную вкладку по ссылке: news.html?tab=events
      ------------------------------------------------------------------ */
-  function initTabs() {
-    var root = document.querySelector('.js-tabs');
+  const initTabs = () => {
+    const root = document.querySelector('.js-tabs');
     if (!root) return;
 
-    var buttons = root.querySelectorAll('[data-tab]');
-    var panels = document.querySelectorAll('[data-panel]');
+    const buttons = [...root.querySelectorAll('[data-tab]')];
+    const panels = document.querySelectorAll('[data-panel]');
+    if (!buttons.length) return;
 
-    function activate(name, updateUrl) {
-      var found = false;
+    const activate = (name, updateUrl) => {
+      if (!buttons.some((btn) => btn.dataset.tab === name)) return false;
 
-      buttons.forEach(function (btn) {
-        var isActive = btn.getAttribute('data-tab') === name;
-        if (isActive) found = true;
+      for (const btn of buttons) {
+        const isActive = btn.dataset.tab === name;
         btn.classList.toggle('is-active', isActive);
-        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      });
+        btn.setAttribute('aria-selected', String(isActive));
+      }
 
-      if (!found) return false;
+      for (const panel of panels) {
+        panel.hidden = panel.dataset.panel !== name;
+      }
 
-      panels.forEach(function (panel) {
-        panel.hidden = panel.getAttribute('data-panel') !== name;
-      });
-
-      if (updateUrl && window.history.replaceState) {
-        var url = new URL(window.location.href);
+      if (updateUrl) {
+        const url = new URL(window.location.href);
         url.searchParams.set('tab', name);
         url.searchParams.delete('page');
         window.history.replaceState(null, '', url);
       }
 
+      // Сообщаем остальным скриптам (например, карте), какая вкладка открыта
+      document.dispatchEvent(new CustomEvent('tabs:change', { detail: { name } }));
+
       return true;
+    };
+
+    for (const btn of buttons) {
+      btn.addEventListener('click', () => activate(btn.dataset.tab, true));
     }
 
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        activate(btn.getAttribute('data-tab'), true);
-      });
-    });
-
-    var fromUrl = new URLSearchParams(window.location.search).get('tab');
-    if (!fromUrl || !activate(fromUrl, false)) {
-      activate(buttons[0].getAttribute('data-tab'), false);
+    if (!activate(params.get('tab'), false)) {
+      activate(buttons[0].dataset.tab, false);
     }
-  }
+  };
 
   /* ------------------------------------------------------------------
      Детальная страница: новость или событие (new.html?type=events).
@@ -146,24 +137,23 @@
        [data-type-href="news.html?tab={type}"] — ссылка с подстановкой типа
        [data-text-news] / [data-text-events] — текст для каждого типа
      ------------------------------------------------------------------ */
-  function initDetailType() {
-    var typed = document.querySelectorAll('[data-detail-type], [data-type-href], [data-text-news]');
-    if (!typed.length) return;
+  const initDetailType = () => {
+    if (!document.querySelector('[data-detail-type], [data-type-href], [data-text-news]')) return;
 
-    var type = new URLSearchParams(window.location.search).get('type') === 'events' ? 'events' : 'news';
+    const type = params.get('type') === 'events' ? 'events' : 'news';
 
-    document.querySelectorAll('[data-detail-type]').forEach(function (el) {
-      el.hidden = el.getAttribute('data-detail-type') !== type;
-    });
+    for (const el of document.querySelectorAll('[data-detail-type]')) {
+      el.hidden = el.dataset.detailType !== type;
+    }
 
-    document.querySelectorAll('[data-type-href]').forEach(function (el) {
-      el.setAttribute('href', el.getAttribute('data-type-href').replace('{type}', type));
-    });
+    for (const el of document.querySelectorAll('[data-type-href]')) {
+      el.href = el.dataset.typeHref.replace('{type}', type);
+    }
 
-    document.querySelectorAll('[data-text-' + type + ']').forEach(function (el) {
-      el.textContent = el.getAttribute('data-text-' + type);
-    });
-  }
+    for (const el of document.querySelectorAll(`[data-text-${type}]`)) {
+      el.textContent = el.getAttribute(`data-text-${type}`);
+    }
+  };
 
   /* ------------------------------------------------------------------
      Стрелки «предыдущий / следующий член Ассоциации» по кругу:
@@ -172,26 +162,26 @@
      .js-member-prev / .js-member-next. Текущий номер — из ?id= в адресе.
      На PHP ссылки можно сразу выводить с сервера, тогда скрипт не нужен.
      ------------------------------------------------------------------ */
-  function initMemberNav() {
-    var nav = document.querySelector('.js-member-nav');
+  const initMemberNav = () => {
+    const nav = document.querySelector('.js-member-nav');
     if (!nav) return;
 
-    var total = parseInt(nav.getAttribute('data-total'), 10);
+    const total = parseInt(nav.dataset.total, 10);
     if (!total) return;
 
-    var id = parseInt(new URLSearchParams(window.location.search).get('id'), 10);
-    if (!id || id < 1 || id > total) id = 1;
+    let id = parseInt(params.get('id'), 10);
+    if (!(id >= 1 && id <= total)) id = 1;
 
-    var prev = id === 1 ? total : id - 1;
-    var next = id === total ? 1 : id + 1;
+    const prev = id === 1 ? total : id - 1;
+    const next = id === total ? 1 : id + 1;
 
-    var prevLink = nav.querySelector('.js-member-prev');
-    var nextLink = nav.querySelector('.js-member-next');
-    if (prevLink) prevLink.setAttribute('href', 'member.html?id=' + prev);
-    if (nextLink) nextLink.setAttribute('href', 'member.html?id=' + next);
-  }
+    const prevLink = nav.querySelector('.js-member-prev');
+    const nextLink = nav.querySelector('.js-member-next');
+    if (prevLink) prevLink.href = `member.html?id=${prev}`;
+    if (nextLink) nextLink.href = `member.html?id=${next}`;
+  };
 
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', () => {
     initDetailType();
     initMemberNav();
     initHeroSlider();

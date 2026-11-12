@@ -125,7 +125,7 @@
 .gallery {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
   min-width: 0;
 }
 
@@ -133,11 +133,18 @@
   width: 100%;
 }
 
+/* Два фото в колонке текста: при колонке 872px — ровно 424×316, как в макете */
 .gallery__slide {
-  width: 310px;
-  height: 200px;
+  width: calc((100% - 24px) / 2);
+  height: auto;
+  aspect-ratio: 424 / 316;
   overflow: hidden;
   border-radius: var(--radius-select);
+}
+
+/* Большие стрелки по центру под галереей */
+.gallery__nav {
+  justify-content: center;
 }
 
 .gallery__slide img {
@@ -191,7 +198,21 @@
   min-height: 32px;
 }
 
+/*
+  Тень карточки при наведении выходит за края (-7px -5px 17px),
+  а Swiper обрезает всё за своими границами. Расширяем видимую область
+  отступами и компенсируем их отрицательными полями — карточки стоят на месте.
+  По бокам не больше отступа контейнера, чтобы не было горизонтального скролла.
+*/
+.related__slider {
+  --shadow-space-x: min(24px, var(--container-padding));
+  margin: -24px calc(var(--shadow-space-x) * -1) -16px;
+  padding: 24px var(--shadow-space-x) 16px;
+}
+
+/* Карточки всегда одного размера, как в макете */
 .related__slider .swiper-slide {
+  width: var(--card-width);
   height: auto;
 }
 
@@ -239,9 +260,14 @@
     font-size: 18px;
   }
 
+  /* На мобильном фото 310×200, листаются пальцем, стрелок нет */
   .gallery__slide {
-    width: 260px;
-    height: 168px;
+    width: 310px;
+    aspect-ratio: 310 / 200;
+  }
+
+  .gallery__nav {
+    display: none;
   }
 
   .detail__back {

@@ -1,4 +1,4 @@
-(function () {
+(() => {
   'use strict';
 
   /*
@@ -14,36 +14,38 @@
       </div>
   */
 
-  var presets = {
-    // Галерея внутри текста: слайды фиксированной ширины 310px
+  const presets = {
+    // Галерея внутри текста: ширина слайдов задаётся в CSS
+    // (десктоп — два фото в колонке, мобильный — 310px)
     gallery: {
       slidesPerView: 'auto',
-      spaceBetween: 16,
-      breakpoints: {
-        768: { spaceBetween: 32 }
-      }
-    },
-
-    // Карточки новостей / событий: 1 → 2 → 4 в ряд
-    cards: {
-      slidesPerView: 1.15,
       spaceBetween: 8,
       breakpoints: {
-        768: { slidesPerView: 2, spaceBetween: 24 },
-        1200: { slidesPerView: 4, spaceBetween: 24 }
-      }
-    }
+        768: { spaceBetween: 24 },
+      },
+    },
+
+    // Карточки новостей / событий: фиксированная ширина 312px (задаётся в CSS),
+    // сколько поместится — столько и видно
+    cards: {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      breakpoints: {
+        768: { spaceBetween: 24 },
+      },
+    },
   };
 
-  function initSliders() {
+  const initSliders = () => {
     if (typeof Swiper === 'undefined') return;
 
-    document.querySelectorAll('.js-slider').forEach(function (root) {
-      var el = root.querySelector('.swiper');
-      if (!el) return;
+    for (const root of document.querySelectorAll('.js-slider')) {
+      const el = root.querySelector('.swiper');
+      if (!el) continue;
 
-      var preset = presets[root.getAttribute('data-slider')] || presets.gallery;
-      var options = {
+      const preset = presets[root.dataset.slider] ?? presets.gallery;
+
+      new Swiper(el, {
         loop: false,
         autoplay: false,
         watchOverflow: true,
@@ -51,21 +53,16 @@
         observeParents: true,
         navigation: {
           prevEl: root.querySelector('.js-slider-prev'),
-          nextEl: root.querySelector('.js-slider-next')
+          nextEl: root.querySelector('.js-slider-next'),
         },
         a11y: {
           prevSlideMessage: 'Предыдущий слайд',
-          nextSlideMessage: 'Следующий слайд'
-        }
-      };
-
-      Object.keys(preset).forEach(function (key) {
-        options[key] = preset[key];
+          nextSlideMessage: 'Следующий слайд',
+        },
+        ...preset,
       });
-
-      new Swiper(el, options);
-    });
-  }
+    }
+  };
 
   document.addEventListener('DOMContentLoaded', initSliders);
 })();

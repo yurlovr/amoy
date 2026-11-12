@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ассоциация музыкальных образовательных учреждений</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Шрифты из папки fonts: предзагрузка, чтобы текст сразу был нужным шрифтом -->
+  <link rel="preload" href="fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/slim-select@4.6.2/dist/slimselect.css" rel="stylesheet">
 
   <link rel="stylesheet" href="css/vars.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/search.css">
 </head>
 
 <body>
@@ -26,26 +33,38 @@
       </a>
 
       <nav class="header__nav" aria-label="Основное меню">
-        <a class="header__link" href="#">Об Ассоциации</a>
+        <a class="header__link" href="about.html">Об Ассоциации</a>
         <a class="header__link" href="news.html">Новости</a>
         <a class="header__link" href="members.html">Члены Ассоциации</a>
         <a class="header__link" href="#">Проекты</a>
-        <a class="header__link" href="#">Контакты</a>
+        <a class="header__link" href="contacts.html">Контакты</a>
       </nav>
 
       <div class="header__actions">
-        <button class="btn-icon btn-icon--contact" type="button" aria-label="Контакты" data-log="Контакты">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M24.0149 48C20.4046 48 16.8979 47.2012 13.6238 45.6185L5.53388 47.1864C5.11588 47.2678 4.68309 47.1457 4.36864 46.861C4.05792 46.5762 3.89515 46.1695 3.92104 45.7368L4.55729 38.0154C1.56847 33.8921 0 29.0625 0 23.993C0 10.7648 10.768 0 24 0C37.232 0 48 10.7648 48 23.993C48 37.2211 37.232 47.9859 24 47.9859L24.0149 48Z" fill="currentColor"/>
-            <path d="M14 28C11.795 28 10 26.208 10 24C10 21.795 11.792 20 14 20C16.205 20 18 21.792 18 24C18 26.205 16.208 28 14 28ZM14 22.1634C12.9896 22.1634 12.1754 22.9895 12.1754 23.9881C12.1754 24.9866 13.0015 25.8127 14 25.8127C14.9985 25.8127 15.8246 24.9984 15.8246 23.9881C15.8246 22.9777 15.0104 22.1634 14 22.1634Z" fill="white"/>
-            <path d="M24 28C21.795 28 20 26.208 20 24C20 21.795 21.792 20 24 20C26.205 20 28 21.792 28 24C28 26.205 26.208 28 24 28ZM24 22.1634C22.9896 22.1634 22.1754 22.9895 22.1754 23.9881C22.1754 24.9866 23.0015 25.8127 24 25.8127C24.9985 25.8127 25.8246 24.9984 25.8246 23.9881C25.8246 22.9777 24.9985 22.1634 24 22.1634Z" fill="white"/>
-            <path d="M34 28C31.795 28 30 26.208 30 24C30 21.795 31.792 20 34 20C36.205 20 38 21.792 38 24C38 26.205 36.208 28 34 28ZM34 22.1634C32.9896 22.1634 32.1754 22.9895 32.1754 23.9881C32.1754 24.9866 33.0015 25.8127 34 25.8127C34.9985 25.8127 35.8246 24.9984 35.8246 23.9881C35.8246 22.9777 35.0104 22.1634 34 22.1634Z" fill="white"/>
+        <button class="btn-icon btn-icon--contact" type="button" aria-label="Обратная связь" aria-haspopup="dialog"
+          data-modal-open="feedback">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path
+              d="M24.0149 48C20.4046 48 16.8979 47.2012 13.6238 45.6185L5.53388 47.1864C5.11588 47.2678 4.68309 47.1457 4.36864 46.861C4.05792 46.5762 3.89515 46.1695 3.92104 45.7368L4.55729 38.0154C1.56847 33.8921 0 29.0625 0 23.993C0 10.7648 10.768 0 24 0C37.232 0 48 10.7648 48 23.993C48 37.2211 37.232 47.9859 24 47.9859L24.0149 48Z"
+              fill="currentColor" />
+            <path
+              d="M14 28C11.795 28 10 26.208 10 24C10 21.795 11.792 20 14 20C16.205 20 18 21.792 18 24C18 26.205 16.208 28 14 28ZM14 22.1634C12.9896 22.1634 12.1754 22.9895 12.1754 23.9881C12.1754 24.9866 13.0015 25.8127 14 25.8127C14.9985 25.8127 15.8246 24.9984 15.8246 23.9881C15.8246 22.9777 15.0104 22.1634 14 22.1634Z"
+              fill="white" />
+            <path
+              d="M24 28C21.795 28 20 26.208 20 24C20 21.795 21.792 20 24 20C26.205 20 28 21.792 28 24C28 26.205 26.208 28 24 28ZM24 22.1634C22.9896 22.1634 22.1754 22.9895 22.1754 23.9881C22.1754 24.9866 23.0015 25.8127 24 25.8127C24.9985 25.8127 25.8246 24.9984 25.8246 23.9881C25.8246 22.9777 24.9985 22.1634 24 22.1634Z"
+              fill="white" />
+            <path
+              d="M34 28C31.795 28 30 26.208 30 24C30 21.795 31.792 20 34 20C36.205 20 38 21.792 38 24C38 26.205 36.208 28 34 28ZM34 22.1634C32.9896 22.1634 32.1754 22.9895 32.1754 23.9881C32.1754 24.9866 33.0015 25.8127 34 25.8127C34.9985 25.8127 35.8246 24.9984 35.8246 23.9881C35.8246 22.9777 35.0104 22.1634 34 22.1634Z"
+              fill="white" />
           </svg>
         </button>
-        <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск" data-log="Поиск">
+        <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск по сайту" aria-haspopup="dialog"
+          data-search-open>
           <img src="icons/search.svg" width="24" height="24" alt="">
         </button>
-        <button class="btn-icon btn-icon--menu header__menu-btn js-menu-open" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+        <button class="btn-icon btn-icon--menu header__menu-btn js-menu-open" type="button" aria-label="Открыть меню"
+          aria-expanded="false" aria-controls="mobile-menu">
           <img src="icons/menu.svg" width="24" height="24" alt="">
         </button>
       </div>
@@ -58,17 +77,37 @@
       <a class="header__logo" href="index.html" aria-label="На главную">
         <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
       </a>
-      <button class="btn-icon btn-icon--menu mobile-menu__close js-menu-close" type="button" aria-label="Закрыть меню">&times;</button>
+      <button class="btn-icon btn-icon--menu mobile-menu__close js-menu-close" type="button"
+        aria-label="Закрыть меню">&times;</button>
     </div>
     <nav class="mobile-menu__nav" aria-label="Мобильное меню">
-      <a class="header__link" href="#">Об Ассоциации</a>
+      <a class="header__link" href="about.html">Об Ассоциации</a>
       <a class="header__link" href="news.html">Новости</a>
       <a class="header__link" href="members.html">Члены Ассоциации</a>
       <a class="header__link" href="#">Проекты</a>
-      <a class="header__link" href="#">Контакты</a>
+      <a class="header__link" href="contacts.html">Контакты</a>
     </nav>
     <div class="mobile-menu__actions">
-      <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск" data-log="Поиск">
+      <button class="btn-icon btn-icon--contact" type="button" aria-label="Обратная связь" aria-haspopup="dialog"
+        data-modal-open="feedback">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
+          <path
+            d="M24.0149 48C20.4046 48 16.8979 47.2012 13.6238 45.6185L5.53388 47.1864C5.11588 47.2678 4.68309 47.1457 4.36864 46.861C4.05792 46.5762 3.89515 46.1695 3.92104 45.7368L4.55729 38.0154C1.56847 33.8921 0 29.0625 0 23.993C0 10.7648 10.768 0 24 0C37.232 0 48 10.7648 48 23.993C48 37.2211 37.232 47.9859 24 47.9859L24.0149 48Z"
+            fill="currentColor" />
+          <path
+            d="M14 28C11.795 28 10 26.208 10 24C10 21.795 11.792 20 14 20C16.205 20 18 21.792 18 24C18 26.205 16.208 28 14 28ZM14 22.1634C12.9896 22.1634 12.1754 22.9895 12.1754 23.9881C12.1754 24.9866 13.0015 25.8127 14 25.8127C14.9985 25.8127 15.8246 24.9984 15.8246 23.9881C15.8246 22.9777 15.0104 22.1634 14 22.1634Z"
+            fill="white" />
+          <path
+            d="M24 28C21.795 28 20 26.208 20 24C20 21.795 21.792 20 24 20C26.205 20 28 21.792 28 24C28 26.205 26.208 28 24 28ZM24 22.1634C22.9896 22.1634 22.1754 22.9895 22.1754 23.9881C22.1754 24.9866 23.0015 25.8127 24 25.8127C24.9985 25.8127 25.8246 24.9984 25.8246 23.9881C25.8246 22.9777 24.9985 22.1634 24 22.1634Z"
+            fill="white" />
+          <path
+            d="M34 28C31.795 28 30 26.208 30 24C30 21.795 31.792 20 34 20C36.205 20 38 21.792 38 24C38 26.205 36.208 28 34 28ZM34 22.1634C32.9896 22.1634 32.1754 22.9895 32.1754 23.9881C32.1754 24.9866 33.0015 25.8127 34 25.8127C34.9985 25.8127 35.8246 24.9984 35.8246 23.9881C35.8246 22.9777 35.0104 22.1634 34 22.1634Z"
+            fill="white" />
+        </svg>
+      </button>
+      <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск по сайту" aria-haspopup="dialog"
+        data-search-open>
         <img src="icons/search.svg" width="24" height="24" alt="">
       </button>
     </div>
@@ -116,9 +155,12 @@
           <div class="hero__pagination js-hero-pagination"></div>
         </div>
 
-        <a class="btn-social hero__social" href="#" aria-label="Мы во ВКонтакте">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
+        <a class="btn-social hero__social" href="https://vk.com/associationmei" target="_blank" rel="noopener" aria-label="Мы во ВКонтакте (откроется в новой вкладке)">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path
+              d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z"
+              fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" />
           </svg>
         </a>
 
@@ -138,7 +180,8 @@
       <div class="container">
         <div class="section-head">
           <h2 class="title-h5">События</h2>
-          <a class="btn btn--secondary" href="news.html?tab=events">Все<span class="only-desktop">&nbsp;события</span></a>
+          <a class="btn btn--secondary" href="news.html?tab=events">Все<span
+              class="only-desktop">&nbsp;события</span></a>
         </div>
 
         <div class="cards">
@@ -149,7 +192,8 @@
             <div class="card__body">
               <span class="card__category">Фестиваль</span>
               <div class="card__info">
-                <p class="card__text">29–30 сентября 2026 года в Тамбове состоится Вторая всероссийская творческая лаборатория для молодых композиторов «Прима Домра»</p>
+                <p class="card__text">29–30 сентября 2026 года в Тамбове состоится Вторая всероссийская творческая
+                  лаборатория для молодых композиторов «Прима Домра»</p>
                 <time class="card__date" datetime="2026-07-22">22.07.2026</time>
               </div>
             </div>
@@ -162,7 +206,8 @@
             <div class="card__body">
               <span class="card__category">Конкурс</span>
               <div class="card__info">
-                <p class="card__text">Шестой межрегиональный Фестиваль-смотр выпускников музыкальных училищ (колледжей искусств) пройдёт в Москве с 28 сентября по 2 октября 2026 года</p>
+                <p class="card__text">Шестой межрегиональный Фестиваль-смотр выпускников музыкальных училищ (колледжей
+                  искусств) пройдёт в Москве с 28 сентября по 2 октября 2026 года</p>
                 <time class="card__date" datetime="2026-07-22">22.07.2026</time>
               </div>
             </div>
@@ -175,7 +220,8 @@
             <div class="card__body">
               <span class="card__category">Форум</span>
               <div class="card__info">
-                <p class="card__text">IX Международный конкурс молодых исполнителей на духовых и ударных инструментах «Сибирские музыкальные ассамблеи»</p>
+                <p class="card__text">IX Международный конкурс молодых исполнителей на духовых и ударных инструментах
+                  «Сибирские музыкальные ассамблеи»</p>
                 <time class="card__date" datetime="2026-07-22">22.07.2026</time>
               </div>
             </div>
@@ -188,7 +234,8 @@
             <div class="card__body">
               <span class="card__category">Фестиваль</span>
               <div class="card__info">
-                <p class="card__text">29–30 сентября 2026 года в Тамбове состоится Вторая всероссийская творческая лаборатория для молодых композиторов «Прима Домра»</p>
+                <p class="card__text">29–30 сентября 2026 года в Тамбове состоится Вторая всероссийская творческая
+                  лаборатория для молодых композиторов «Прима Домра»</p>
                 <time class="card__date" datetime="2026-07-22">22.07.2026</time>
               </div>
             </div>
@@ -211,7 +258,8 @@
               <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
             </div>
             <div class="card__info">
-              <p class="card__text">3 октября 2025 года в Екатеринбурге члены Ассоциации приняли участие в Деловой программе VIII Симфонического форума России</p>
+              <p class="card__text">3 октября 2025 года в Екатеринбурге члены Ассоциации приняли участие в Деловой
+                программе VIII Симфонического форума России</p>
               <time class="card__date" datetime="2026-07-22">22.07.2026</time>
             </div>
           </a>
@@ -221,7 +269,8 @@
               <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
             </div>
             <div class="card__info">
-              <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+              <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института
+                культуры вновь стал грантообладателем Российского фонда культуры</p>
               <time class="card__date" datetime="2026-07-22">22.07.2026</time>
             </div>
           </a>
@@ -231,7 +280,8 @@
               <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
             </div>
             <div class="card__info">
-              <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института культуры вновь стал грантообладателем Российского фонда культуры</p>
+              <p class="card__text">Научный рецензируемый журнал «Сфера культуры» Самарского государственного института
+                культуры вновь стал грантообладателем Российского фонда культуры</p>
               <time class="card__date" datetime="2026-07-22">22.07.2026</time>
             </div>
           </a>
@@ -241,7 +291,8 @@
               <img src="images/news.jpg" width="312" height="200" alt="" loading="lazy">
             </div>
             <div class="card__info">
-              <p class="card__text">В марте 2024 года Московская средняя специальная музыкальная школа (колледж) имени Гнесиных проводит три конкурса проекта «Gnessin Competition for Young Musicians»</p>
+              <p class="card__text">В марте 2024 года Московская средняя специальная музыкальная школа (колледж) имени
+                Гнесиных проводит три конкурса проекта «Gnessin Competition for Young Musicians»</p>
               <time class="card__date" datetime="2026-07-22">22.07.2026</time>
             </div>
           </a>
@@ -258,7 +309,8 @@
         <div class="banner__content">
           <div class="banner__head">
             <h2 class="title-h2">География</h2>
-            <p class="text-large">Ассоциация объединяет организации <br>из разных регионов России, учебные заведения Беларуси и Монголии</p>
+            <p class="text-large">Ассоциация объединяет организации <br>из разных регионов России, учебные заведения
+              Беларуси и Монголии</p>
           </div>
 
           <div class="stats stats--small">
@@ -281,9 +333,82 @@
       </div>
     </section>
 
-    <!-- ============ Карта (заглушка) ============ -->
-    <section class="map" id="map" aria-label="Карта членов Ассоциации">
-      <div class="map__placeholder"></div>
+    <!-- ============ Карта членов Ассоциации (Яндекс.Карты, js/maps.js) ============ -->
+    <section class="map" aria-label="Карта членов Ассоциации">
+      <div class="select">
+        <select id="cities" class="map-dropdown">
+          <option value="none" selected="selected">Выберите город</option>
+          <option value="arkh" data-reg="arkh">Архангельск </option>
+          <option value="met30" data-reg="met30">Астрахань </option>
+          <option value="met33" data-reg="met33">Братск </option>
+          <option value="br" data-reg="br">Брянск </option>
+          <option value="met10" data-reg="met10">Владивосток </option>
+          <option value="vlad" data-reg="vlad">Владимир </option>
+          <option value="volg" data-reg="volg">Волгоград </option>
+          <option value="met6" data-reg="met6">Воронеж </option>
+          <option value="donestk" data-reg="donestk">Донецк </option>
+          <option value="met5" data-reg="met5">Екатеринбург </option>
+          <option value="palant" data-reg="palant">Йошкар-Ола </option>
+          <option value="met32" data-reg="met32">Казань </option>
+          <option value="met16" data-reg="met16">Калининград </option>
+          <option value="kemerovo" data-reg="kemerovo">Кемерово </option>
+          <option value="kolomna" data-reg="kolomna">Коломна </option>
+          <option value="met28" data-reg="met28">Красноярск </option>
+          <option value="met42" data-reg="met42">Курск </option>
+          <option value="kyz01" data-reg="kyz01">Кызыл </option>
+          <option value="lip" data-reg="lip">Липецк </option>
+          <option value="lugansk" data-reg="lugansk">Луганск </option>
+          <option value="met22" data-reg="met22">Магнитогорск </option>
+          <option value="min" data-reg="min">Минск </option>
+          <option value="met1" data-reg="met1">Москва </option>
+          <option value="met41" data-reg="met41">Нальчик </option>
+          <option value="met14" data-reg="met14">Нижний Новгород </option>
+          <option value="met31" data-reg="met31">Новомосковск </option>
+          <option value="met7" data-reg="met7">Новосибирск </option>
+          <option value="okt" data-reg="okt">Октябрьский </option>
+          <option value="omsk_1" data-reg="omsk_1">Омск </option>
+          <option value="orl" data-reg="orl">Орел </option>
+          <option value="osiart" data-reg="osiart">Оренбург </option>
+          <option value="perm1" data-reg="perm1">Пермь </option>
+          <option value="petrzav_1" data-reg="petrzav_1">Петрозаводск </option>
+          <option value="pushk" data-reg="pushk">Пушкино </option>
+          <option value="met15" data-reg="met15">Ростов-на-Дону </option>
+          <option value="ryaz" data-reg="ryaz">Рязань </option>
+          <option value="salavat" data-reg="salavat">Салават </option>
+          <option value="samgik" data-reg="samgik">Самара </option>
+          <option value="met34" data-reg="met34">Санкт-Петербург </option>
+          <option value="met35" data-reg="met35">Саратов </option>
+          <option value="sib" data-reg="sib">Сибай </option>
+          <option value="sochi" data-reg="sochi">Сочи </option>
+          <option value="sterl" data-reg="sterl">Стерлитамак </option>
+          <option value="met9" data-reg="met9">Сургут </option>
+          <option value="syzr" data-reg="syzr">Сызрань </option>
+          <option value="met27" data-reg="met27">Сыктывкар </option>
+          <option value="met2" data-reg="met2">Тамбов </option>
+          <option value="tol" data-reg="tol">Тольятти </option>
+          <option value="tumen" data-reg="tumen">Тюмень </option>
+          <option value="ulan2" data-reg="ulan2">Улан-Батор </option>
+          <option value="met12" data-reg="met12">Улан-Удэ </option>
+          <option value="met20" data-reg="met20">Уфа </option>
+          <option value="uch" data-reg="uch">Учалы </option>
+          <option value="met8" data-reg="met8">Ханты-Мансийск </option>
+          <option value="himki" data-reg="himki">Химки </option>
+          <option value="cheb" data-reg="cheb">Чебоксары </option>
+          <option value="met25" data-reg="met25">Челябинск </option>
+          <option value="chel" data-reg="chel">Череповец </option>
+          <option value="met26" data-reg="met26">Чита </option>
+          <option value="met11" data-reg="met11">Электросталь </option>
+          <option value="met29" data-reg="met29">Якутск </option>
+
+        </select>
+      </div>
+      <!-- <div class="map__placeholder"></div> -->
+      <div class="yamap" id="map"></div>
+      <!-- Карточка организации: заполняется скриптом по клику на метку (js/maps.js) -->
+      <a class="map-card js-map-card" href="member.html" hidden>
+        <img class="map-card__image" src="images/organisation.jpg" width="240" height="160" alt="">
+        <span class="map-card__name"></span>
+      </a>
     </section>
 
     <!-- ============ Проекты ============ -->
@@ -327,10 +452,12 @@
             <img src="logos/theater.svg" width="270" height="103" alt="Ассоциация музыкальных театров" loading="lazy">
           </div>
           <div class="partner-card">
-            <img src="logos/art.svg" width="272" height="66" alt="Art Masters — национальный открытый чемпионат творческих компетенций" loading="lazy">
+            <img src="logos/art.svg" width="272" height="66"
+              alt="Art Masters — национальный открытый чемпионат творческих компетенций" loading="lazy">
           </div>
           <div class="partner-card">
-            <img src="logos/critic.svg" width="280" height="54" alt="Ассоциация музыкальных журналистов, критиков и музыковедов" loading="lazy">
+            <img src="logos/critic.svg" width="280" height="54"
+              alt="Ассоциация музыкальных журналистов, критиков и музыковедов" loading="lazy">
           </div>
         </div>
       </div>
@@ -366,25 +493,26 @@
 
           <nav class="footer__nav" aria-label="Меню в подвале">
             <ul class="footer__list">
-              <li><a class="footer__link" href="#">Об Ассоциации</a></li>
+              <li><a class="footer__link" href="about.html">Об Ассоциации</a></li>
               <li><a class="footer__link" href="members.html">Члены Ассоциации</a></li>
               <li><a class="footer__link" href="news.html">Новости и события</a></li>
               <li><a class="footer__link" href="#">Проекты</a></li>
-              <li class="only-mobile"><a class="footer__link" href="#">Партнеры</a></li>
             </ul>
             <ul class="footer__list">
-              <li><a class="footer__link" href="#">Интерактивная карта</a></li>
-              <li class="only-mobile"><a class="footer__link" href="#">Музыкальное образование</a></li>
-              <li><a class="footer__link" href="#">Контакты</a></li>
+              <li><a class="footer__link" href="members.html?tab=map">Интерактивная карта</a></li>
+              <li><a class="footer__link" href="contacts.html">Контакты</a></li>
               <li><a class="footer__link" href="enter.html">Вступить в Ассоциацию</a></li>
-              <li><a class="footer__link" href="#">Связаться с нами</a></li>
+              <li><a class="footer__link" href="#feedback" data-modal-open="feedback">Связаться с нами</a></li>
             </ul>
           </nav>
         </div>
 
-        <a class="btn-social footer__social" href="#" aria-label="Мы во ВКонтакте">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
+        <a class="btn-social footer__social" href="https://vk.com/associationmei" target="_blank" rel="noopener" aria-label="Мы во ВКонтакте (откроется в новой вкладке)">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path
+              d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z"
+              fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" />
           </svg>
         </a>
       </div>
@@ -399,7 +527,134 @@
     </div>
   </footer>
 
+  <!-- ============ Поиск по сайту (js/search.js) ============ -->
+  <div class="search js-search" id="search" role="dialog" aria-modal="true" aria-label="Поиск по сайту"
+    aria-hidden="true">
+    <button class="search__close" type="button" data-search-close aria-label="Закрыть поиск"><svg viewBox="0 0 32 32"
+        fill="none" aria-hidden="true">
+        <path
+          d="M14.4164 16L3.20833 4.79193L4.79225 3.20801L16.0003 14.416L27.2083 3.20801L28.7923 4.79193L17.5842 16L28.7923 27.208L27.2083 28.7919L16.0003 17.5839L4.79225 28.7919L3.20833 27.208L14.4164 16Z"
+          fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" />
+      </svg></button>
+
+    <div class="search__inner">
+      <!-- Заголовок со стрелкой назад — только на мобильном -->
+      <div class="search__head">
+        <button class="search__back" type="button" data-search-close aria-label="Закрыть поиск"><svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M9.33964 11L14.2952 6.04447L13.2062 4.95553L7.16175 11L13.2062 17.0445L14.2952 15.9555L9.33964 11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg></button>
+        <p class="search__heading">Поиск</p>
+      </div>
+
+      <!-- action — адрес страницы результатов на сервере -->
+      <form class="search__field js-search-form" action="" method="get" role="search">
+        <button class="btn-icon btn-icon--search" type="submit" aria-label="Найти">
+          <img src="icons/search.svg" width="24" height="24" alt="">
+        </button>
+        <input class="search__input js-search-input" type="search" name="q"
+          placeholder="Введите название события, места" autocomplete="off" aria-label="Поисковый запрос">
+        <button class="search__clear js-search-clear" type="button" aria-label="Очистить" hidden><svg
+            viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path
+              d="M14.4164 16L3.20833 4.79193L4.79225 3.20801L16.0003 14.416L27.2083 3.20801L28.7923 4.79193L17.5842 16L28.7923 27.208L27.2083 28.7919L16.0003 17.5839L4.79225 28.7919L3.20833 27.208L14.4164 16Z"
+              fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" />
+          </svg></button>
+      </form>
+
+      <div class="search__results js-search-results" aria-live="polite" hidden>
+        <div class="search__list js-search-list"></div>
+        <p class="search__empty js-search-empty" hidden>Ничего не найдено<br>Попробуйте ввести данные заново</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Модальное окно «Обратная связь» ============ -->
+  <div class="modal" id="modal-feedback" role="dialog" aria-modal="true" aria-labelledby="feedback-title"
+    aria-hidden="true">
+    <div class="modal__dialog">
+      <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">
+        <img src="icons/close.svg" width="32" height="32" alt="">
+      </button>
+
+      <h2 class="modal__title" id="feedback-title">Обратная связь</h2>
+
+      <!-- action — адрес обработчика на сервере -->
+      <form class="form js-form" action="" method="post" novalidate>
+        <div class="form__fields">
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="text" name="name" autocomplete="name" placeholder=" " required>
+              <span class="field__label">Ваше имя*</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img
+                  src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="email" name="email" autocomplete="email" placeholder=" " required>
+              <span class="field__label">Почта*</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img
+                  src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder=" "
+                required>
+              <span class="field__label">Телефон*</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img
+                  src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="text" name="company" autocomplete="organization" placeholder=" ">
+              <span class="field__label">Компания</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img
+                  src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="text" name="message" placeholder=" ">
+              <span class="field__label">Ваш запрос</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img
+                  src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+        </div>
+
+        <label class="checkbox">
+          <input class="checkbox__input js-form-agree" type="checkbox" name="agree" value="1" required>
+          <span class="checkbox__box" aria-hidden="true"></span>
+          <span>Я подтверждаю ознакомление с <a href="#">Политикой обработки персональных данных</a> и даю <a
+              href="#">Согласие на обработку моих персональных данных</a></span>
+        </label>
+
+        <button class="btn btn--light" type="submit" disabled>Отправить</button>
+      </form>
+
+      <p class="form__success js-form-success" hidden>Спасибо! Ваше сообщение отправлено, мы свяжемся с вами в ближайшее
+        время.</p>
+
+      <img class="modal__decor" src="images/feedback-logo.png" width="143" height="175" alt="" loading="lazy">
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slim-select@4.6.2/dist/slimselect.js"></script>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=d49d4874-da51-47d0-ae4e-42e62fb012c4&lang=ru_RU"></script>
   <script src="js/main.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/maps.js"></script>
 </body>
+
 </html>

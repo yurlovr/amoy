@@ -1,0 +1,479 @@
+/* ==========================================================================
+   Страница «Об Ассоциации» (about.html)
+   Цветные блоки (шапка, задачи, руководство) — максимум 1440px, как на главной.
+   ========================================================================== */
+
+/* ---------- Главный блок ---------- */
+
+.about-hero {
+  position: relative;
+  max-width: var(--container-width);
+  min-height: 568px;
+  margin: 0 auto;
+  overflow: hidden;
+  color: var(--color-background-100);
+  background-color: #000;
+}
+
+.about-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.about-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 12%, rgba(0, 0, 0, 0.05) 37%, rgba(0, 0, 0, 0.55) 62%);
+}
+
+.about-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: max-content 424px;
+  column-gap: 96px;
+  align-content: start;
+  min-height: 568px;
+  padding-top: 176px;
+  padding-bottom: 61px;
+}
+
+.about-hero__subtitle {
+  align-self: center;
+}
+
+.about-hero__text {
+  grid-column: 2;
+  margin-top: 64px;
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+}
+
+.about-hero__btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 48px;
+}
+
+.about-hero__social {
+  position: absolute;
+  top: 128px;
+  right: var(--container-padding);
+}
+
+/* ---------- Задачи Ассоциации ---------- */
+
+.tasks {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 48px 0;
+  background-color: var(--color-background-200);
+}
+
+/* Лента: прокручивается по горизонтали, полоса прокрутки скрыта */
+.tasks__track {
+  display: flex;
+  gap: 24px;
+  padding: 0 var(--container-padding);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-padding: 0 var(--container-padding);
+  scrollbar-width: none;
+}
+
+.tasks__track::-webkit-scrollbar {
+  display: none;
+}
+
+.task {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 42px;
+  width: 200px;
+  height: 482px;
+  padding: 32px;
+  overflow: hidden;
+  text-align: left;
+  border-radius: var(--radius-card);
+  background-color: var(--color-background-100);
+  cursor: pointer;
+  transition: width 0.4s ease, opacity var(--transition);
+}
+
+/* Закрытая карточка: только фото, приглушённое */
+.task:not(.is-active) {
+  opacity: 0.7;
+}
+
+.task:not(.is-active):hover {
+  opacity: 1;
+}
+
+.task__body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 584px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.task__label {
+  font-family: var(--label-xsmall-font-family);
+  font-size: 14px;
+  line-height: var(--label-xsmall-line-height);
+  text-transform: uppercase;
+}
+
+.task__title {
+  font-family: var(--h5-font-family);
+  font-size: var(--h5-font-size);
+  font-weight: var(--h5-font-weight);
+  line-height: var(--h5-line-height);
+}
+
+.task__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+}
+
+/* Открытая карточка: белая, текст + фото внизу */
+.task.is-active {
+  width: 648px;
+  cursor: default;
+}
+
+.task.is-active .task__body {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.task.is-active .task__image {
+  position: relative;
+  inset: auto;
+  width: 584px;
+  height: auto;
+  aspect-ratio: 584 / 186;
+  margin-top: auto;
+}
+
+.tasks__nav {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 24px;
+}
+
+/* ---------- Текст об Ассоциации ---------- */
+
+.about-text {
+  max-width: 872px;
+  margin: 0 auto;
+  padding-top: 64px;
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+}
+
+.about-text p + p {
+  margin-top: 24px;
+}
+
+@media (max-width: 767px) {
+  .about-text {
+    font-size: var(--body-small-font-size);
+  }
+
+  .about-text p + p {
+    margin-top: 20px;
+  }
+}
+
+/* ---------- Миссия и журнал — баннеры как на главной (.banner) ---------- */
+
+.mission {
+  padding-top: 96px;
+}
+
+.journal {
+  padding-top: 112px;
+}
+
+/*
+  Картинки «Миссии» и «Журнала» показываем в их собственном размере,
+  по центру места под картинку, без растягивания и без обрезки
+  (журнал не квадратный — 369×326). На узких экранах уменьшаются под ширину.
+*/
+.mission .banner__media,
+.journal .banner__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mission .banner__media img,
+.journal .banner__media img {
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+/* ---------- Руководство ---------- */
+
+.leaders {
+  position: relative;
+  max-width: var(--container-width);
+  margin: 96px auto 0;
+  padding: 64px 0 32px;
+  overflow: hidden;
+  background-color: var(--color-text-900);
+  background-image:
+    radial-gradient(ellipse 50% 45% at 35% 0%, rgba(110, 20, 200, 0.75), transparent 70%),
+    radial-gradient(ellipse 35% 50% at 100% 0%, rgba(90, 20, 170, 0.6), transparent 70%),
+    radial-gradient(ellipse 40% 40% at 30% 100%, rgba(152, 5, 109, 0.55), transparent 70%),
+    radial-gradient(ellipse 60% 55% at 85% 100%, rgba(192, 46, 149, 0.85), transparent 70%);
+}
+
+.leaders__slider {
+  overflow: visible;
+}
+
+.leaders__slider .swiper-wrapper {
+  align-items: center;
+  height: 476px;
+}
+
+.leader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 360px;
+  color: var(--color-background-100);
+  transform-origin: center center;
+  transition-property: transform, opacity;
+}
+
+.leader__photo {
+  width: 360px;
+  height: 312px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+}
+
+.leader__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 320px;
+  transition: opacity var(--transition);
+}
+
+.leader__role {
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+  color: var(--color-main-500);
+}
+
+.leader__name {
+  font-family: var(--h6-font-family);
+  font-size: var(--h6-font-size);
+  font-weight: var(--h6-font-weight);
+  line-height: var(--h6-line-height);
+  text-transform: uppercase;
+}
+
+.leaders__nav {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 32px;
+}
+
+/* ---------- Документы и символика ---------- */
+
+.about-docs {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  padding-top: 64px;
+}
+
+.about-docs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 648px;
+  min-width: 0;
+}
+
+.about-docs__symbol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  width: 544px;
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+}
+
+/* ---------- Адаптив ---------- */
+
+@media (max-width: 1199px) {
+  .about-hero__inner {
+    column-gap: 48px;
+  }
+
+  .about-docs {
+    flex-direction: column;
+  }
+
+  .about-docs__list,
+  .about-docs__symbol {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-hero,
+  .about-hero__inner {
+    min-height: 712px;
+  }
+
+  .about-hero__overlay {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0.9) 100%);
+  }
+
+  .about-hero__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 111px;
+    padding-bottom: 40px;
+  }
+
+  .about-hero__subtitle {
+    margin-top: 16px;
+  }
+
+  .about-hero__text {
+    margin-top: 16px;
+  }
+
+  .about-hero__btn {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .about-hero__social {
+    display: none;
+  }
+
+  .tasks {
+    padding: 24px 0;
+  }
+
+  .tasks__track {
+    gap: 8px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .task {
+    width: 112px;
+    height: 334px;
+    padding: 16px;
+    gap: 23px;
+    scroll-snap-align: start;
+  }
+
+  .task.is-active {
+    width: 312px;
+  }
+
+  .task__body {
+    width: 280px;
+    gap: 24px;
+  }
+
+  .task__label {
+    font-size: 12px;
+  }
+
+  .task__title {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .task.is-active .task__image {
+    width: 280px;
+    aspect-ratio: 280 / 130;
+  }
+
+  .tasks__nav,
+  .leaders__nav {
+    display: none;
+  }
+
+  .about-text {
+    padding-top: 48px;
+  }
+
+  .mission,
+  .journal {
+    padding-top: 48px;
+  }
+
+  .leaders {
+    margin-top: 48px;
+    padding: 32px 0;
+  }
+
+  .leaders__slider .swiper-wrapper {
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .leader {
+    width: 312px;
+    align-items: stretch;
+  }
+
+  .leader__photo {
+    width: 312px;
+    height: 270px;
+  }
+
+  .leader__caption {
+    width: auto;
+    padding: 0 8px;
+  }
+
+  .about-docs {
+    gap: 48px;
+    padding-top: 48px;
+  }
+
+  .about-docs__list,
+  .about-docs__symbol {
+    gap: 24px;
+  }
+
+  .about-docs__symbol {
+    font-size: var(--body-small-font-size);
+  }
+
+  .about-docs__symbol .btn {
+    width: 100%;
+  }
+}

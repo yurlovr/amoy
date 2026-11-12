@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Карточка руководителя (about-detail.html)
+   ========================================================================== */
+
+.person-page {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-top: 48px;
+}
+
+.person[hidden] {
+  display: none;
+}
+
+.person__head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.person__role {
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+}
+
+/* Heading/H4 — Unbounded Bold 32 / 1.36 */
+.person__name {
+  font-family: var(--font-unbounded);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.36;
+}
+
+.person__main {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.person__photo {
+  flex-shrink: 0;
+  width: 424px;
+  height: 424px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  background-color: var(--color-main-800);
+}
+
+.person__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 536px;
+  min-width: 0;
+}
+
+.person__text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+}
+
+.person__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 24px;
+  font-size: var(--body-small-font-size);
+  font-weight: var(--body-small-bold-font-weight);
+  line-height: var(--body-small-line-height);
+  list-style: disc;
+}
+
+.person-page__nav {
+  display: flex;
+  gap: 4px;
+  margin-top: 24px;
+}
+
+@media (max-width: 1199px) {
+  .person__main {
+    gap: 32px;
+  }
+
+  .person__photo {
+    width: 40%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .person-page {
+    padding-top: 32px;
+  }
+
+  .person__head {
+    margin-bottom: 24px;
+  }
+
+  .person__name {
+    font-size: 24px;
+    line-height: 1.24;
+  }
+
+  .person__main {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .person__photo {
+    width: 100%;
+  }
+
+  .person__info {
+    gap: 24px;
+  }
+
+  .person__text {
+    gap: 24px;
+    font-size: var(--body-small-font-size);
+  }
+
+  /* На мобильном стрелки во всю ширину, каждая — половина */
+  .person-page__nav .btn-arrow {
+    flex: 1;
+  }
+}

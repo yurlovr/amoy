@@ -1,8 +1,3 @@
-/* ==========================================================================
-   Переменные проекта (дизайн-токены из Figma «АМОУ»)
-   Имена повторяют переменные Figma: Color/Main/800 -> --color-main-800 и т.д.
-   ========================================================================== */
-
 :root {
   /* ---------- Цвета: основные ---------- */
   --color-main-500: #fbb4e6;
@@ -13,6 +8,10 @@
   --color-blue-800: #1b2062;
 
   --color-orange-500: #fbaa9c;
+  --color-orange-600: #ff8772;
+  --color-orange-800: #f04c2f;
+
+  --color-main-600: #ea84cc;
 
   --color-text-900: #151515;
 
@@ -99,9 +98,13 @@
   --buttons-breadcrumbs-hover: #ce51aa;
   --buttons-breadcrumbs-active: #aeb0c7;
 
+  --ss-primary-color: #C02E95;
+  --ss-focus-color: '';
+  --ss-border-radius: 8px;
+
   /* ---------- Цвета: макет без отдельных переменных ---------- */
   --color-project-card: #cbd0ff;
-  --color-map-placeholder: #f2c8ee;
+  --color-map-placeholder: rgba(234, 132, 204, 0.6);
   --hero-gradient: linear-gradient(190deg, rgba(7, 0, 176, 0) 43.7%, #0700b0 88%);
   --hero-gradient-mobile: linear-gradient(180deg, rgba(16, 5, 79, 0.44) 0%, rgba(7, 0, 176, 0.38) 40%, #0700b0 80%, #0700b0 100%);
 

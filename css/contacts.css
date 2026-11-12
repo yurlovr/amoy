@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Страница «Контакты» (contacts.html)
+   Карта растягивается до футера, футер прижат к низу экрана.
+   Карточка организации — стили .map-card из css/sections.css.
+   ========================================================================== */
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts__title {
+  padding-top: 64px;
+  padding-bottom: 42px;
+  font-family: var(--h3-font-family);
+  font-size: var(--h3-font-size);
+  font-weight: var(--h3-font-weight);
+  line-height: var(--h3-line-height);
+}
+
+/* Карта занимает всё место до футера, но не ниже 600px */
+.contacts__map {
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: var(--container-width);
+  min-height: 600px;
+  margin: 0 auto;
+}
+
+/* Розовый оттенок карты — общий для всех карт, см. css/sections.css */
+.contacts__map-canvas {
+  position: relative;
+  /* Свой контекст наложения: слои карты не перекроют карточку */
+  isolation: isolate;
+  flex: 1;
+  background-color: var(--color-map-placeholder);
+}
+
+/* Футер вплотную к карте */
+body:has(.contacts) .footer {
+  margin-top: 0;
+}
+
+/* Карточка не ссылка — без эффекта наведения */
+.map-card--static:hover {
+  box-shadow: none;
+}
+
+.map-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 8px;
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+}
+
+.map-card__info .map-card__name {
+  padding: 0;
+  font-style: normal;
+}
+
+@media (max-width: 767px) {
+  .contacts__title {
+    padding-top: 32px;
+    padding-bottom: 24px;
+    font-family: var(--h5-font-family);
+    font-size: var(--h5-font-size);
+    font-weight: var(--h5-font-weight);
+    line-height: var(--h5-line-height);
+  }
+
+  .contacts__map {
+    min-height: 680px;
+  }
+
+  .map-card__info {
+    padding: 0 8px;
+  }
+}

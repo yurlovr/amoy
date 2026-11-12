@@ -12,7 +12,12 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Футер прижат к низу экрана, даже если контента на странице мало */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   min-width: 320px;
   font-family: var(--body-font-family);
@@ -21,6 +26,15 @@ body {
   color: var(--color-text-900);
   background: var(--color-background-100);
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+body > header,
+body > footer {
+  flex-shrink: 0;
 }
 
 body.is-locked {

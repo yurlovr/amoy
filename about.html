@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Об Ассоциации — Ассоциация музыкальных образовательных учреждений</title>
+
+  <!-- Шрифты из папки fonts: предзагрузка, чтобы текст сразу был нужным шрифтом -->
+  <link rel="preload" href="fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/about.css">
+</head>
+
+<body>
+
+  <!-- ============ Шапка ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html" aria-label="На главную">
+        <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+      </a>
+
+      <nav class="header__nav" aria-label="Основное меню">
+        <a class="header__link is-active" href="about.html" aria-current="page">Об Ассоциации</a>
+        <a class="header__link" href="news.html">Новости</a>
+        <a class="header__link" href="members.html">Члены Ассоциации</a>
+        <a class="header__link" href="#">Проекты</a>
+        <a class="header__link" href="contacts.html">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn-icon btn-icon--contact" type="button" aria-label="Обратная связь" aria-haspopup="dialog" data-modal-open="feedback">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M24.0149 48C20.4046 48 16.8979 47.2012 13.6238 45.6185L5.53388 47.1864C5.11588 47.2678 4.68309 47.1457 4.36864 46.861C4.05792 46.5762 3.89515 46.1695 3.92104 45.7368L4.55729 38.0154C1.56847 33.8921 0 29.0625 0 23.993C0 10.7648 10.768 0 24 0C37.232 0 48 10.7648 48 23.993C48 37.2211 37.232 47.9859 24 47.9859L24.0149 48Z" fill="currentColor"/>
+            <path d="M14 28C11.795 28 10 26.208 10 24C10 21.795 11.792 20 14 20C16.205 20 18 21.792 18 24C18 26.205 16.208 28 14 28ZM14 22.1634C12.9896 22.1634 12.1754 22.9895 12.1754 23.9881C12.1754 24.9866 13.0015 25.8127 14 25.8127C14.9985 25.8127 15.8246 24.9984 15.8246 23.9881C15.8246 22.9777 15.0104 22.1634 14 22.1634Z" fill="white"/>
+            <path d="M24 28C21.795 28 20 26.208 20 24C20 21.795 21.792 20 24 20C26.205 20 28 21.792 28 24C28 26.205 26.208 28 24 28ZM24 22.1634C22.9896 22.1634 22.1754 22.9895 22.1754 23.9881C22.1754 24.9866 23.0015 25.8127 24 25.8127C24.9985 25.8127 25.8246 24.9984 25.8246 23.9881C25.8246 22.9777 24.9985 22.1634 24 22.1634Z" fill="white"/>
+            <path d="M34 28C31.795 28 30 26.208 30 24C30 21.795 31.792 20 34 20C36.205 20 38 21.792 38 24C38 26.205 36.208 28 34 28ZM34 22.1634C32.9896 22.1634 32.1754 22.9895 32.1754 23.9881C32.1754 24.9866 33.0015 25.8127 34 25.8127C34.9985 25.8127 35.8246 24.9984 35.8246 23.9881C35.8246 22.9777 35.0104 22.1634 34 22.1634Z" fill="white"/>
+          </svg>
+        </button>
+        <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск по сайту" aria-haspopup="dialog" data-search-open>
+          <img src="icons/search.svg" width="24" height="24" alt="">
+        </button>
+        <button class="btn-icon btn-icon--menu header__menu-btn js-menu-open" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+          <img src="icons/menu.svg" width="24" height="24" alt="">
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Мобильное меню (до 1023px) -->
+  <div class="mobile-menu js-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__top">
+      <a class="header__logo" href="index.html" aria-label="На главную">
+        <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+      </a>
+      <button class="btn-icon btn-icon--menu mobile-menu__close js-menu-close" type="button" aria-label="Закрыть меню">&times;</button>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Мобильное меню">
+      <a class="header__link is-active" href="about.html" aria-current="page">Об Ассоциации</a>
+      <a class="header__link" href="news.html">Новости</a>
+      <a class="header__link" href="members.html">Члены Ассоциации</a>
+      <a class="header__link" href="#">Проекты</a>
+      <a class="header__link" href="contacts.html">Контакты</a>
+    </nav>
+    <div class="mobile-menu__actions">
+      <button class="btn-icon btn-icon--contact" type="button" aria-label="Обратная связь" aria-haspopup="dialog" data-modal-open="feedback">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24.0149 48C20.4046 48 16.8979 47.2012 13.6238 45.6185L5.53388 47.1864C5.11588 47.2678 4.68309 47.1457 4.36864 46.861C4.05792 46.5762 3.89515 46.1695 3.92104 45.7368L4.55729 38.0154C1.56847 33.8921 0 29.0625 0 23.993C0 10.7648 10.768 0 24 0C37.232 0 48 10.7648 48 23.993C48 37.2211 37.232 47.9859 24 47.9859L24.0149 48Z" fill="currentColor"/>
+          <path d="M14 28C11.795 28 10 26.208 10 24C10 21.795 11.792 20 14 20C16.205 20 18 21.792 18 24C18 26.205 16.208 28 14 28ZM14 22.1634C12.9896 22.1634 12.1754 22.9895 12.1754 23.9881C12.1754 24.9866 13.0015 25.8127 14 25.8127C14.9985 25.8127 15.8246 24.9984 15.8246 23.9881C15.8246 22.9777 15.0104 22.1634 14 22.1634Z" fill="white"/>
+          <path d="M24 28C21.795 28 20 26.208 20 24C20 21.795 21.792 20 24 20C26.205 20 28 21.792 28 24C28 26.205 26.208 28 24 28ZM24 22.1634C22.9896 22.1634 22.1754 22.9895 22.1754 23.9881C22.1754 24.9866 23.0015 25.8127 24 25.8127C24.9985 25.8127 25.8246 24.9984 25.8246 23.9881C25.8246 22.9777 24.9985 22.1634 24 22.1634Z" fill="white"/>
+          <path d="M34 28C31.795 28 30 26.208 30 24C30 21.795 31.792 20 34 20C36.205 20 38 21.792 38 24C38 26.205 36.208 28 34 28ZM34 22.1634C32.9896 22.1634 32.1754 22.9895 32.1754 23.9881C32.1754 24.9866 33.0015 25.8127 34 25.8127C34.9985 25.8127 35.8246 24.9984 35.8246 23.9881C35.8246 22.9777 35.0104 22.1634 34 22.1634Z" fill="white"/>
+        </svg>
+        </button>
+      <button class="btn-icon btn-icon--search" type="button" aria-label="Поиск по сайту" aria-haspopup="dialog" data-search-open>
+        <img src="icons/search.svg" width="24" height="24" alt="">
+      </button>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============ Главный блок ============ -->
+    <section class="about-hero">
+      <img class="about-hero__bg" src="images/about/hero.jpg" width="1920" height="1280" alt="">
+      <div class="about-hero__overlay"></div>
+
+      <div class="container about-hero__inner">
+        <h1 class="title-h2">АМОУ</h1>
+        <p class="text-large about-hero__subtitle">Ассоциация музыкальных образовательных учреждений</p>
+        <p class="about-hero__text">Негосударственная некоммерческая организация, представляющая интересы профессионального музыкального образования в Российской Федерации</p>
+        <a class="btn btn--light about-hero__btn" href="enter.html">Как вступить в Ассоциацию</a>
+
+        <a class="btn-social about-hero__social" href="https://vk.com/associationmei" target="_blank" rel="noopener" aria-label="Мы во ВКонтакте (откроется в новой вкладке)">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ Задачи Ассоциации ============ -->
+    <!-- Первая карточка раскрыта (класс is-active). Скрипт — js/about.js -->
+    <section class="tasks js-tasks" aria-label="Задачи Ассоциации">
+      <div class="tasks__track js-tasks-track">
+          <article class="task is-active" tabindex="0" aria-expanded="true">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Сохранение преемственности педагогических традиций в музыкальном образовании</h3>
+            </div>
+            <img class="task__image" src="images/about/task-1.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Укрепление системы непрерывного музыкального образования</h3>
+            </div>
+            <img class="task__image" src="images/about/task-2.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Представление интересов профессионального музыкального образования в диалоге с государственными органами и профильными ведомствами</h3>
+            </div>
+            <img class="task__image" src="images/about/task-3.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Участие в обсуждении и совершенствовании образовательных стандартов и программ в сфере музыкального искусства</h3>
+            </div>
+            <img class="task__image" src="images/about/task-4.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Проведение профессиональной экспертизы ключевых инициатив и решений, затрагивающих музыкальное образование</h3>
+            </div>
+            <img class="task__image" src="images/about/task-5.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Формирование единого пространства профессионального общения для учреждений всех уровней музыкального образования</h3>
+            </div>
+            <img class="task__image" src="images/about/task-1.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Развитие межрегионального сотрудничества и профессиональных связей между учреждениями</h3>
+            </div>
+            <img class="task__image" src="images/about/task-2.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Содействие обмену успешным опытом, методиками и педагогическими наработками между участниками</h3>
+            </div>
+            <img class="task__image" src="images/about/task-3.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Создание условий для профессионального становления и творческой реализации обучающихся на всех этапах</h3>
+            </div>
+            <img class="task__image" src="images/about/task-4.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Поддержка наставничества и работы с одарёнными детьми и молодёжью</h3>
+            </div>
+            <img class="task__image" src="images/about/task-5.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Содействие творческим проектам образовательных учреждений — членов Ассоциации</h3>
+            </div>
+            <img class="task__image" src="images/about/task-1.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Расширение профессиональных связей с музыкальными образовательными организациями зарубежных стран</h3>
+            </div>
+            <img class="task__image" src="images/about/task-2.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Участие в международных форумах и совместных проектах в сфере музыкального образования</h3>
+            </div>
+            <img class="task__image" src="images/about/task-3.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Формирование репутации членства в Ассоциации как знака профессионального качества</h3>
+            </div>
+            <img class="task__image" src="images/about/task-4.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Укрепление авторитета профессии музыканта-педагога и музыкального образования в целом</h3>
+            </div>
+            <img class="task__image" src="images/about/task-5.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+          <article class="task" tabindex="0" aria-expanded="false">
+            <div class="task__body">
+              <p class="task__label">Задача Ассоциации</p>
+              <h3 class="task__title">Определение долгосрочных ориентиров развития музыкального образования</h3>
+            </div>
+            <img class="task__image" src="images/about/task-1.jpg" width="1200" height="800" alt="" loading="lazy">
+          </article>
+      </div>
+      <div class="tasks__nav">
+        <button class="btn-arrow js-tasks-prev" type="button" aria-label="Предыдущая задача"><img src="icons/chevron-left.svg" width="11" height="18" alt=""></button>
+        <button class="btn-arrow js-tasks-next" type="button" aria-label="Следующая задача"><img src="icons/chevron-right.svg" width="11" height="18" alt=""></button>
+      </div>
+    </section>
+
+    <!-- ============ Об Ассоциации ============ -->
+    <div class="container">
+      <div class="about-text">
+        <p>Ассоциация учреждена в 2010 году по инициативе ректора Российской академии музыки имени Гнесиных Галины Васильевны Маяровской на базе Ассоциации средних специальных учебных заведений, которая была создана в 1991 году.</p>
+        <p>Ассоциация объединяет музыкальные образовательные учреждения всех уровней — вузы, училища и колледжи, музыкальные школы, методические и ресурсные центры, все отечественные консерватории, а также иностранные образовательные учреждения.</p>
+        <p>Сегодня Ассоциация сотрудничает с Министерством науки и высшего образования РФ, Министерством просвещения РФ, Министерством культуры РФ, Национальным аккредитационным агентством в сфере образования, Россотрудничеством, Институтом контроля качества и аккредитации образовательных программ в сфере искусства и культуры, Федеральным ресурсным информационно-аналитическим центром художественного образования, Федеральным учебно-методическим объединением в системе высшего образования по укрупненной группе специальностей и направлений подготовки 53.00.00 Музыкальное искусство.</p>
+        <p>АМОУ ежегодно проводит встречи руководителей учебных заведений с представителями различных государственных структур. Для образовательных учреждений среднего профессионального образования эти мероприятия готовятся совместно с курсами повышения квалификации РАМ имени Гнесиных.</p>
+      </div>
+    </div>
+
+    <!-- ============ Миссия ============ -->
+    <section class="mission">
+      <div class="container banner">
+        <div class="banner__media">
+          <img src="images/about/mission.png" width="432" height="432" alt="" loading="lazy">
+        </div>
+        <div class="banner__content">
+          <div class="banner__head">
+            <h2 class="title-h2">Миссия</h2>
+            <p class="text-large">Ассоциация видит свою миссию в сохранении <br>и укреплении системы профессионального музыкального образования</p>
+          </div>
+          <a class="btn btn--dark banner__btn" href="enter.html">Вступить в Ассоциацию</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Руководство ============ -->
+    <!-- data-initial — номер (с нуля) руководителя, который стоит по центру при загрузке -->
+    <section class="leaders js-leaders" data-initial="3" aria-label="Руководство Ассоциации">
+      <div class="swiper leaders__slider">
+        <div class="swiper-wrapper">
+            <a class="swiper-slide leader" href="about-detail.html">
+              <img class="leader__photo" src="images/about/leader-6.jpg" width="360" height="312" alt="" loading="lazy">
+              <span class="leader__caption">
+                <span class="leader__role">Член правления Ассоциации</span>
+                <span class="leader__name">Фамилия<br>Имя Отчество</span>
+              </span>
+            </a>
+            <a class="swiper-slide leader" href="about-detail.html">
+              <img class="leader__photo" src="images/about/leader-7.jpg" width="360" height="312" alt="" loading="lazy">
+              <span class="leader__caption">
+                <span class="leader__role">Член правления Ассоциации</span>
+                <span class="leader__name">Фамилия<br>Имя Отчество</span>
+              </span>
+            </a>
+            <a class="swiper-slide leader" href="about-detail.html?id=3">
+              <img class="leader__photo" src="images/about/leader-varentsov.jpg" width="360" height="312" alt="" loading="lazy">
+              <span class="leader__caption">
+                <span class="leader__role">Исполнительный директор Ассоциации</span>
+                <span class="leader__name">Варенцов<br>Антон Юрьевич</span>
+              </span>
+            </a>
+            <a class="swiper-slide leader" href="about-detail.html?id=1">
+              <img class="leader__photo" src="images/about/leader-mayarovskaya.jpg" width="360" height="312" alt="" loading="lazy">
+              <span class="leader__caption">
+                <span class="leader__role">Президент Ассоциации</span>
+                <span class="leader__name">Маяровская<br>Галина Васильевна</span>
+              </span>
+            </a>
+            <a class="swiper-slide leader" href="about-detail.html?id=2">
+              <img class="leader__photo" src="images/about/leader-golubenko.jpg" width="360" height="312" alt="" loading="lazy">
+              <span class="leader__caption">
+                <span class="leader__role">Вице-президент Ассоциации</span>
+                <span class="leader__name">Голубенко<br>Святослав Сергеевич</span>
+              </span>
+            </a>
+            <a class="swiper-slide leader" href="about-detail.html">
+              <img class="leader__photo" src="images/about/leader-4.jpg" width="360" height="312" alt="" loading="lazy">
+              <span class="leader__caption">
+                <span class="leader__role">Член правления Ассоциации</span>
+                <span class="leader__name">Фамилия<br>Имя Отчество</span>
+              </span>
+            </a>
+            <a class="swiper-slide leader" href="about-detail.html">
+              <img class="leader__photo" src="images/about/leader-5.jpg" width="360" height="312" alt="" loading="lazy">
+              <span class="leader__caption">
+                <span class="leader__role">Член правления Ассоциации</span>
+                <span class="leader__name">Фамилия<br>Имя Отчество</span>
+              </span>
+            </a>
+        </div>
+      </div>
+      <div class="leaders__nav">
+        <button class="btn-arrow js-leaders-prev" type="button" aria-label="Назад"><img src="icons/chevron-left.svg" width="11" height="18" alt=""></button>
+        <button class="btn-arrow js-leaders-next" type="button" aria-label="Вперёд"><img src="icons/chevron-right.svg" width="11" height="18" alt=""></button>
+      </div>
+    </section>
+
+    <!-- ============ Документы и символика ============ -->
+    <div class="container about-docs">
+      <section class="about-docs__list">
+        <h2 class="title-h5">Документы</h2>
+        <ul class="doc-list">
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Устав Ассоциации.pdf">
+                <span class="doc-link__icon"><img src="icons/pdf.svg" width="20" height="20" alt=""></span>
+                <span>Устав Ассоциации (4,58 мБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Порядок приема в члены Ассоциации.pdf">
+                <span class="doc-link__icon"><img src="icons/pdf.svg" width="20" height="20" alt=""></span>
+                <span>Порядок приема в члены Ассоциации музыкальных образовательных учреждений и исключения из числа членов Ассоциации (219 кБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Заявление о приеме в Ассоциацию.pdf">
+                <span class="doc-link__icon"><img src="icons/doc.svg" width="20" height="20" alt=""></span>
+                <span>Заявление о приеме в Ассоциацию (30 кБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Анкета.pdf">
+                <span class="doc-link__icon"><img src="icons/doc.svg" width="20" height="20" alt=""></span>
+                <span>Анкета (32 кБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Регламент и положение о членстве в Ассоциации.pdf">
+                <span class="doc-link__icon"><img src="icons/pdf.svg" width="20" height="20" alt=""></span>
+                <span>Регламент и положение о членстве в Ассоциации музыкальных образовательных учреждений (383 кБ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-link" href="docs/chicken.pdf" download="Порядок определения размера и способа уплаты членских взносов.pdf">
+                <span class="doc-link__icon"><img src="icons/pdf.svg" width="20" height="20" alt=""></span>
+                <span>Порядок определения размера и способа уплаты членских взносов, дополнительных имущественных и иных взносах в имущество (378 кБ)</span>
+              </a>
+            </li>
+        </ul>
+      </section>
+
+      <section class="about-docs__symbol">
+        <h2 class="title-h5">Символика Ассоциации</h2>
+        <p>Основой символики Ассоциации, закрепленной в Уставе Ассоциации, является стилизованное графическое изображение буквы «А», которое составлено из наклонного знака «ff» (фортиссимо) и вертикального прямоугольного элемента со скошенными краями. Цветом логотипа может быть как сиреневый цвет, так и черный.</p>
+        <!-- Заглушка: заменить на архив с логотипами -->
+        <a class="btn btn--dark" href="docs/chicken.pdf" download="Логотип АМОУ.pdf">Скачать логотип</a>
+      </section>
+    </div>
+
+    <!-- ============ Журнал Ассоциации ============ -->
+    <section class="journal">
+      <div class="container banner">
+        <div class="banner__media">
+          <img src="images/about/journal.png" width="369" height="326" alt="" loading="lazy">
+        </div>
+        <div class="banner__content">
+          <div class="banner__head">
+            <h2 class="title-h2">Журнал Ассоциации</h2>
+            <p class="text-large">В 2014 году, по инициативе Магнитогорской государственной консерватории имени М.И.Глинки был учреждён журнал Ассоциации «Образование <br>в сфере искусства»</p>
+          </div>
+          <!-- Ссылка на сторонний ресурс с архивом журнала -->
+          <a class="btn btn--dark banner__btn" href="http://magkmusic.com/izdatelskaya-deyatelnost-magk/obrazovanie-v-sfere-iskusstva/vypuski.html" target="_blank" rel="noopener">Архив</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ Подвал ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__top">
+        <div class="footer__main">
+          <a class="footer__logo" href="index.html" aria-label="На главную">
+            <img src="logos/amoy.svg" width="200" height="81" alt="Ассоциация музыкальных образовательных учреждений">
+          </a>
+
+          <nav class="footer__nav" aria-label="Меню в подвале">
+            <ul class="footer__list">
+              <li><a class="footer__link" href="about.html">Об Ассоциации</a></li>
+              <li><a class="footer__link" href="members.html">Члены Ассоциации</a></li>
+              <li><a class="footer__link" href="news.html">Новости и события</a></li>
+              <li><a class="footer__link" href="#">Проекты</a></li>
+            </ul>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="members.html?tab=map">Интерактивная карта</a></li>
+              <li><a class="footer__link" href="contacts.html">Контакты</a></li>
+              <li><a class="footer__link" href="enter.html">Вступить в Ассоциацию</a></li>
+              <li><a class="footer__link" href="#feedback" data-modal-open="feedback">Связаться с нами</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <a class="btn-social footer__social" href="https://vk.com/associationmei" target="_blank" rel="noopener" aria-label="Мы во ВКонтакте (откроется в новой вкладке)">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.37 3.37C0 6.75 0 12.17 0 23.04V24.96C0 35.82 0 41.26 3.37 44.63C6.75 48 12.17 48 23.04 48H24.96C35.82 48 41.26 48 44.63 44.63C48 41.25 48 35.83 48 24.96V23.04C48 12.18 48 6.74 44.63 3.37C41.25 0 35.83 0 24.96 0H23.04C12.18 0 6.74 0 3.37 3.37ZM8.11 14.67C8.36 27.15 14.93 34.67 25.76 34.67H26.39V27.52C30.34 27.92 33.28 30.87 34.48 34.67H40.17C39.6087 32.529 38.6039 30.5298 37.2206 28.8019C35.8373 27.0741 34.1063 25.6561 32.14 24.64C34.62 23.15 38.14 19.55 38.97 14.67H33.79C32.71 18.64 29.48 22.24 26.39 22.58V14.67H21.13V28.52C17.93 27.72 13.76 23.84 13.59 14.67H8.11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2008-2026 Ассоциация музыкальных образовательных учреждений</p>
+        <div class="footer__legal">
+          <a class="link-underlined" href="#">Политика конфиденциальности</a>
+          <a class="link-underlined" href="#">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ Поиск по сайту (js/search.js) ============ -->
+  <div class="search js-search" id="search" role="dialog" aria-modal="true" aria-label="Поиск по сайту" aria-hidden="true">
+    <button class="search__close" type="button" data-search-close aria-label="Закрыть поиск"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M14.4164 16L3.20833 4.79193L4.79225 3.20801L16.0003 14.416L27.2083 3.20801L28.7923 4.79193L17.5842 16L28.7923 27.208L27.2083 28.7919L16.0003 17.5839L4.79225 28.7919L3.20833 27.208L14.4164 16Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg></button>
+
+    <div class="search__inner">
+      <!-- Заголовок со стрелкой назад — только на мобильном -->
+      <div class="search__head">
+        <button class="search__back" type="button" data-search-close aria-label="Закрыть поиск"><svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M9.33964 11L14.2952 6.04447L13.2062 4.95553L7.16175 11L13.2062 17.0445L14.2952 15.9555L9.33964 11Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg></button>
+        <p class="search__heading">Поиск</p>
+      </div>
+
+      <!-- action — адрес страницы результатов на сервере -->
+      <form class="search__field js-search-form" action="" method="get" role="search">
+        <button class="btn-icon btn-icon--search" type="submit" aria-label="Найти">
+          <img src="icons/search.svg" width="24" height="24" alt="">
+        </button>
+        <input class="search__input js-search-input" type="search" name="q" placeholder="Введите название события, места" autocomplete="off" aria-label="Поисковый запрос">
+        <button class="search__clear js-search-clear" type="button" aria-label="Очистить" hidden><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M14.4164 16L3.20833 4.79193L4.79225 3.20801L16.0003 14.416L27.2083 3.20801L28.7923 4.79193L17.5842 16L28.7923 27.208L27.2083 28.7919L16.0003 17.5839L4.79225 28.7919L3.20833 27.208L14.4164 16Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg></button>
+      </form>
+
+      <div class="search__results js-search-results" aria-live="polite" hidden>
+        <div class="search__list js-search-list"></div>
+        <p class="search__empty js-search-empty" hidden>Ничего не найдено<br>Попробуйте ввести данные заново</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Модальное окно «Обратная связь» ============ -->
+  <div class="modal" id="modal-feedback" role="dialog" aria-modal="true" aria-labelledby="feedback-title" aria-hidden="true">
+    <div class="modal__dialog">
+      <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">
+        <img src="icons/close.svg" width="32" height="32" alt="">
+      </button>
+
+      <h2 class="modal__title" id="feedback-title">Обратная связь</h2>
+
+      <!-- action — адрес обработчика на сервере -->
+      <form class="form js-form" action="" method="post" novalidate>
+        <div class="form__fields">
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="text" name="name" autocomplete="name" placeholder=" " required>
+              <span class="field__label">Ваше имя*</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="email" name="email" autocomplete="email" placeholder=" " required>
+              <span class="field__label">Почта*</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder=" " required>
+              <span class="field__label">Телефон*</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="text" name="company" autocomplete="organization" placeholder=" ">
+              <span class="field__label">Компания</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+
+          <label class="field">
+            <span class="field__control">
+              <input class="field__input" type="text" name="message" placeholder=" ">
+              <span class="field__label">Ваш запрос</span>
+              <button class="field__clear" type="button" aria-label="Очистить поле" tabindex="-1"><img src="icons/clear.svg" width="24" height="24" alt=""></button>
+            </span>
+            <span class="field__error" aria-live="polite"></span>
+          </label>
+        </div>
+
+        <label class="checkbox">
+          <input class="checkbox__input js-form-agree" type="checkbox" name="agree" value="1" required>
+          <span class="checkbox__box" aria-hidden="true"></span>
+          <span>Я подтверждаю ознакомление с <a href="#">Политикой обработки персональных данных</a> и даю <a href="#">Согласие на обработку моих персональных данных</a></span>
+        </label>
+
+        <button class="btn btn--light" type="submit" disabled>Отправить</button>
+      </form>
+
+      <p class="form__success js-form-success" hidden>Спасибо! Ваше сообщение отправлено, мы свяжемся с вами в ближайшее время.</p>
+
+      <img class="modal__decor" src="images/feedback-logo.png" width="143" height="175" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/about.js"></script>
+</body>
+</html>

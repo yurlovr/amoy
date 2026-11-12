@@ -426,22 +426,51 @@ a.pagination__item:hover {
    Ряд карточек: на десктопе сетка, на мобильном горизонтальный скролл
    ========================================================================== */
 
+/*
+  Как на news.html: карточки всегда 312px, ряд по центру, «уши» растут по бокам.
+  В ряду 4 → 3 → 2 карточки (на мобильном — горизонтальный слайдер).
+  На главной в блоке ровно 4 карточки и всегда один ряд: те, что не помещаются,
+  скрываются, а не переносятся на второй ряд (их видно по кнопке «Все …»).
+
+  Брейкпоинты посчитаны с запасом на полосу прокрутки (~15px):
+    4 × 312 + 3 × 24 = 1320px — помещаются от 1440px;
+    3 × 312 + 2 × 24 =  984px — помещаются от 1048px.
+  Отрицательные поля по 8px — тот же запас, что у .news-grid.
+*/
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, var(--card-width));
+  justify-content: center;
   gap: var(--cards-gap);
   align-items: start;
+  margin: 0 -8px;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1439px) {
   .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, var(--card-width));
+  }
+
+  .cards > :nth-child(n + 4) {
+    display: none;
+  }
+}
+
+@media (max-width: 1047px) {
+  .cards {
+    grid-template-columns: repeat(2, var(--card-width));
+  }
+
+  .cards > :nth-child(n + 3) {
+    display: none;
   }
 }
 
 @media (max-width: 767px) {
   .cards {
     display: flex;
+    /* В ленте начинаем слева: при center начало ленты уходит за край и туда не прокрутить */
+    justify-content: flex-start;
     margin: 0 calc(var(--container-padding) * -1);
     padding: 0 var(--container-padding);
     overflow-x: auto;
@@ -454,7 +483,10 @@ a.pagination__item:hover {
     display: none;
   }
 
-  .cards > * {
+  /* В слайдере показываем все карточки (все виды карточек — flex) */
+  .cards > *,
+  .cards > :nth-child(n) {
+    display: flex;
     flex: 0 0 var(--card-width);
     scroll-snap-align: start;
   }

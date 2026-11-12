@@ -1,4 +1,4 @@
-(function () {
+(() => {
   'use strict';
 
   /*
@@ -20,91 +20,83 @@
     с учётом пагинации.
   */
 
-  function initFilter(root) {
-    var list = root.querySelector('.js-filter-list');
+  const getName = (item) => item.textContent.trim();
+
+  const initFilter = (root) => {
+    const list = root.querySelector('.js-filter-list');
     if (!list) return;
 
-    var items = Array.prototype.slice.call(list.querySelectorAll('.js-filter-item'));
-    var sortButtons = root.querySelectorAll('[data-sort]');
-    var letterButtons = root.querySelectorAll('[data-letter]');
-    var empty = root.querySelector('.js-filter-empty');
+    const items = [...list.querySelectorAll('.js-filter-item')];
+    const sortButtons = root.querySelectorAll('[data-sort]');
+    const letterButtons = root.querySelectorAll('[data-letter]');
+    const empty = root.querySelector('.js-filter-empty');
 
-    var params = new URLSearchParams(window.location.search);
-    var state = {
+    const params = new URLSearchParams(window.location.search);
+    const state = {
       sort: params.get('sort') === 'desc' ? 'desc' : 'asc',
-      letter: (params.get('letter') || '').toUpperCase()
+      letter: (params.get('letter') ?? '').toUpperCase(),
     };
 
-    function getName(item) {
-      return item.textContent.trim();
-    }
+    const setPressed = (btn, active) => {
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    };
 
-    function render() {
+    const render = () => {
       // Сортировка по названию
-      var sorted = items.slice().sort(function (a, b) {
-        var result = getName(a).localeCompare(getName(b), 'ru');
-        return state.sort === 'desc' ? -result : result;
-      });
-      sorted.forEach(function (item) {
-        list.appendChild(item);
-      });
+      const direction = state.sort === 'desc' ? -1 : 1;
+      const sorted = [...items].sort((a, b) => direction * getName(a).localeCompare(getName(b), 'ru'));
+      list.append(...sorted);
 
       // Фильтр: название начинается с выбранной буквы
-      var visible = 0;
-      items.forEach(function (item) {
-        var match = !state.letter || getName(item).charAt(0).toUpperCase() === state.letter;
+      let visible = 0;
+      for (const item of items) {
+        const match = !state.letter || getName(item).charAt(0).toUpperCase() === state.letter;
         item.hidden = !match;
-        if (match) visible++;
-      });
+        if (match) visible += 1;
+      }
 
       if (empty) empty.hidden = visible > 0;
 
-      sortButtons.forEach(function (btn) {
-        var active = btn.getAttribute('data-sort') === state.sort;
-        btn.classList.toggle('is-active', active);
-        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
+      for (const btn of sortButtons) setPressed(btn, btn.dataset.sort === state.sort);
+      for (const btn of letterButtons) setPressed(btn, btn.dataset.letter === state.letter);
+    };
 
-      letterButtons.forEach(function (btn) {
-        var active = btn.getAttribute('data-letter') === state.letter;
-        btn.classList.toggle('is-active', active);
-        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
-    }
-
-    function updateUrl() {
-      if (!window.history.replaceState) return;
-      var url = new URL(window.location.href);
+    const updateUrl = () => {
+      const url = new URL(window.location.href);
       url.searchParams.delete('page');
+
       if (state.sort === 'desc') url.searchParams.set('sort', 'desc');
       else url.searchParams.delete('sort');
+
       if (state.letter) url.searchParams.set('letter', state.letter);
       else url.searchParams.delete('letter');
-      window.history.replaceState(null, '', url);
-    }
 
-    sortButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        state.sort = btn.getAttribute('data-sort');
+      window.history.replaceState(null, '', url);
+    };
+
+    for (const btn of sortButtons) {
+      btn.addEventListener('click', () => {
+        state.sort = btn.dataset.sort;
         render();
         updateUrl();
       });
-    });
+    }
 
     // Повторный клик по активной букве сбрасывает фильтр
-    letterButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var letter = btn.getAttribute('data-letter');
+    for (const btn of letterButtons) {
+      btn.addEventListener('click', () => {
+        const { letter } = btn.dataset;
         state.letter = state.letter === letter ? '' : letter;
         render();
         updateUrl();
       });
-    });
+    }
 
     render();
-  }
+  };
 
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.js-filter').forEach(initFilter);
   });
 })();

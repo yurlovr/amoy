@@ -18,12 +18,22 @@
   margin-bottom: 24px;
 }
 
-/* Сетка карточек: 4 колонки, между рядами 64px */
+/*
+  Сетка карточек: ширина карточки всегда 312px, колонок столько,
+  сколько помещается (4 → 3 → 2 → 1), ряд по центру. Между рядами 64px.
+*/
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, var(--card-width));
+  justify-content: center;
   gap: 64px var(--cards-gap);
   align-items: start;
+  /*
+    4 карточки по макету занимают ровно 1320px — без запаса. Полоса прокрутки
+    браузера (~15px) отнимает место, и четвёртая карточка переносилась.
+    Даём сетке залезть на 8px в боковые отступы контейнера с каждой стороны.
+  */
+  margin: 0 -8px;
 }
 
 .news-page .pagination {
@@ -48,12 +58,6 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 1199px) {
-  .news-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 767px) {
   .news-page {
     padding-top: 32px;
@@ -67,12 +71,7 @@
   }
 
   .news-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .news-grid .card__image {
-    height: 220px;
+    row-gap: 40px;
   }
 
   .news-page .pagination {

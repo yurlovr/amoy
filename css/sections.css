@@ -73,8 +73,9 @@
   color: var(--buttons-menu-hover);
 }
 
+/* Активный пункт на тёмной шапке (buttons/menu/pressed) */
 .header__link.is-active {
-  color: var(--buttons-footer-hover);
+  color: var(--color-main-800);
 }
 
 /* В светлой шапке кнопка меню тёмная (buttons/account/background) */
@@ -265,6 +266,7 @@
 }
 
 @media (max-width: 767px) {
+
   .hero,
   .hero__inner {
     min-height: 712px;
@@ -418,6 +420,18 @@
   }
 }
 
+/* Планшет: рядом с картинкой крупный заголовок не помещается — ставим текст под картинку */
+@media (max-width: 1023px) {
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .banner__content {
+    width: 100%;
+  }
+}
+
 @media (max-width: 767px) {
   .banner {
     flex-direction: column;
@@ -425,8 +439,10 @@
     gap: 24px;
   }
 
+  /* Картинка не больше своего размера (432px): на широких телефонах не растягивается */
   .banner__media {
     width: 100%;
+    max-width: 432px;
   }
 
   .geography .banner__media img {
@@ -435,6 +451,15 @@
 
   .association .banner__media img {
     aspect-ratio: 343 / 322;
+  }
+
+  /*
+    Картинки квадратные, а блок по мобильному макету ниже квадрата —
+    вписываем целиком, без обрезки. Фон у картинок белый, полос не видно.
+  */
+  .geography .banner__media img,
+  .association .banner__media img {
+    object-fit: contain;
   }
 
   .banner__content {
@@ -455,19 +480,134 @@
   }
 }
 
-/* ==========================================================================
-   Карта (заглушка, карта будет подключена отдельно)
-   ========================================================================== */
+/*
+  Карточка организации на карте: открывается по клику на метку,
+  целиком является ссылкой на страницу члена Ассоциации.
+  Стоит в левом верхнем углу карты, на уровне левого края контента.
+*/
+.map-card {
+  position: absolute;
+  top: 18px;
+  left: max(var(--container-padding), calc((100% - var(--container-width)) / 2 + var(--container-padding)));
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  width: 256px;
+  padding: 8px;
+  color: var(--color-text-900);
+  border-radius: 20px;
+  background-color: var(--color-background-100);
+  transition: box-shadow var(--transition);
+}
+
+.map-card[hidden] {
+  display: none;
+}
+
+.map-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.map-card__image {
+  width: 240px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  background-color: var(--color-background-200);
+}
+
+.map-card__name {
+  padding: 12px 8px;
+  font-size: var(--body-small-font-size);
+  line-height: var(--body-small-line-height);
+  transition: color var(--transition);
+}
+
+.map-card:hover .map-card__name {
+  color: var(--buttons-link-hover);
+}
+
+/*
+  Значок группы меток на карте: число организаций в группе подставляет карта.
+  Сдвиг на половину размера ставит центр круга в точку привязки группы —
+  с ним совпадает круглая область клика из js/maps.js.
+*/
+.map-cluster {
+  position: relative;
+  top: -28px;
+  left: -28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  font-family: var(--font-unbounded);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.16;
+  color: var(--color-background-100);
+  border-radius: 50%;
+  background-color: var(--buttons-map-marker-default);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.map-cluster:hover {
+  background-color: var(--buttons-search-hover);
+}
+
+/*
+  Розовые карты (главная, members.html?tab=map, contacts.html):
+  подложка Яндекса в оттенках серого, поверх неё розовый слой (#EAA4E3, 60%)
+  в режиме умножения. Слой стоит между подложкой (z-index 501) и метками
+  (z-index 2004), поэтому метки и числа в кружках не перекрашиваются.
+*/
+.yamap [class*='-ground-pane'],
+.contacts__map-canvas [class*='-ground-pane'] {
+  filter: grayscale(1);
+}
+
+.yamap [class*='-inner-panes']::after,
+.contacts__map-canvas [class*='-inner-panes']::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 502;
+  background-color: #eaa4e3;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
 
 .map {
   margin-top: 128px;
+  position: relative;
 }
 
-.map__placeholder {
+.map__placeholder,
+.yamap {
   max-width: var(--container-width);
   margin: 0 auto;
   height: 600px;
   background-color: var(--color-map-placeholder);
+}
+
+.map__placeholder {
+  width: -webkit-fill-available;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.select {
+  position: absolute;
+  top: 5%;
+  z-index: 105;
+  right: 2%;
+  width: 200px;
 }
 
 @media (max-width: 767px) {
@@ -475,9 +615,74 @@
     margin-top: 54px;
   }
 
-  .map__placeholder {
+  .map__placeholder,
+  .yamap {
     height: 612px;
   }
+
+  /*
+    На мобильном карточка — белая панель внизу карты (сверху справа выбор города).
+    Ширина не больше 375px: на экранах шире не растягивается, а стоит по центру.
+  */
+  .map-card {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    gap: 24px;
+    width: 100%;
+    max-width: 375px;
+    padding: 16px 16px 24px;
+    border-radius: 20px 20px 0 0;
+    transform: translateX(-50%);
+  }
+
+  .map-card:hover {
+    box-shadow: none;
+  }
+
+  .map-card__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 343 / 214;
+  }
+
+  .map-card__name {
+    padding: 0;
+  }
+}
+
+/*
+  Карта на странице «Члены Ассоциации» (вкладка «Интерактивная карта»):
+  на всю ширину (до 1440px), сразу под вкладками, футер — вплотную к карте.
+*/
+.map--page {
+  margin: 0 calc(var(--container-padding) * -1);
+}
+
+body:has(.js-members-map:not([hidden])) .footer {
+  margin-top: 0;
+}
+
+@media (max-width: 767px) {
+  .map--page {
+    margin-top: 0;
+  }
+
+  .map--page .yamap {
+    height: 726px;
+  }
+}
+
+/* Яндекс.Карты: прячем копирайт-панель и ссылки «Открыть в Яндекс.Картах», «Как добраться» */
+[class$='-copyrights-pane'] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+[class*='gotoymaps'],
+[class*='gototech'],
+[class*='copyright__link'] {
+  display: none !important;
 }
 
 /* ==========================================================================
@@ -674,4 +879,42 @@
   .footer__legal .link-underlined {
     border-bottom-width: 1px;
   }
+}
+/* ---------- Кнопки масштаба карты (главная и members.html?tab=map) ---------- */
+
+.map-zoom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  line-height: 1;
+  color: #4d4d4d;
+  border: 0;
+  border-radius: 12px;
+  background-color: var(--color-background-100);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.map-zoom:hover {
+  color: var(--color-main-600);
+}
+
+@media (max-width: 767px) {
+  .map-zoom {
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+    border-radius: 8px;
+  }
+}
+
+/* Выбор города скрыт, пока карта не загрузилась и SlimSelect не заменил обычный select (js/maps.js) */
+.map .select:not(.is-ready) {
+  visibility: hidden;
 }

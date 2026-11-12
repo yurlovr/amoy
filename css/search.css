@@ -1,0 +1,303 @@
+/* ==========================================================================
+   Поиск по сайту (открывается кнопкой с лупой в шапке)
+   Подключается на всех страницах.
+   Десктоп — окно поверх затемнённой страницы, мобильный — на весь экран.
+   Если результатов много, прокручивается список внутри блока.
+   ========================================================================== */
+
+.search {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  padding: 192px var(--container-padding) 48px;
+  background-color: rgba(21, 21, 21, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+
+.search.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search__close {
+  position: fixed;
+  top: 64px;
+  right: max(var(--container-padding), calc((100vw - var(--container-width)) / 2 + 64px));
+  display: flex;
+  width: 42px;
+  height: 42px;
+  color: var(--color-background-100);
+  transition: opacity var(--transition);
+}
+
+.search__close:hover {
+  opacity: 0.7;
+}
+
+.search__close svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Поле и результаты занимают высоту окна, лишнее прокручивается в списке */
+.search__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1096px;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+/* Заголовок «Поиск» со стрелкой назад — только на мобильном */
+.search__head {
+  display: none;
+}
+
+/* ---------- Поле ввода ---------- */
+
+.search__field {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  height: 96px;
+  padding: 0 28px 0 20px;
+  border-radius: 42px;
+  background-color: var(--color-background-100);
+}
+
+.search__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--color-text-900);
+  background: none;
+  border: 0;
+  outline: none;
+}
+
+.search__input::placeholder {
+  color: var(--color-background-300);
+}
+
+/* Убираем встроенный крестик браузера у type="search" */
+.search__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.search__clear {
+  display: flex;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--color-background-300);
+  transition: color var(--transition);
+}
+
+.search__clear:hover {
+  color: var(--color-text-900);
+}
+
+.search__clear[hidden] {
+  display: none;
+}
+
+.search__clear svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Результаты ---------- */
+
+.search__results {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 32px;
+  border-radius: 40px;
+  background-color: var(--color-background-100);
+}
+
+.search__results[hidden] {
+  display: none;
+}
+
+.search__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-background-300) transparent;
+}
+
+.search__list[hidden] {
+  display: none;
+}
+
+.search__item {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 8px;
+  max-width: 768px;
+  min-width: 0;
+}
+
+.search__title,
+.search__meta {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search__title {
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+  transition: color var(--transition);
+}
+
+.search__item:hover .search__title {
+  color: var(--buttons-link-hover);
+}
+
+.search__meta {
+  font-size: var(--body-small-font-size);
+  font-weight: var(--body-small-bold-font-weight);
+  line-height: var(--body-small-line-height);
+  color: var(--color-background-300);
+}
+
+.search__empty {
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+  text-align: center;
+  color: var(--color-background-300);
+}
+
+/* ---------- Мобильная версия: на весь экран ---------- */
+
+@media (max-width: 767px) {
+  .search {
+    padding: 32px 16px 48px;
+    background-color: var(--color-background-100);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .search__close {
+    display: none;
+  }
+
+  .search__inner {
+    height: 100%;
+    gap: 48px;
+  }
+
+  .search__head {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 28px;
+    height: 28px;
+    color: var(--color-background-300);
+    transition: color var(--transition);
+  }
+
+  .search__back:hover {
+    color: var(--color-text-900);
+  }
+
+  .search__back svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .search__heading {
+    font-family: var(--h5-font-family);
+    font-size: var(--h5-font-size);
+    font-weight: var(--h5-font-weight);
+    line-height: var(--h5-line-height);
+  }
+
+  /* Серое поле, кнопка поиска — тёмная, справа */
+  .search__field {
+    height: auto;
+    padding: 12px 16px;
+    background-color: var(--color-background-200);
+  }
+
+  .search__field .btn-icon--search {
+    order: 2;
+    width: 32px;
+    height: 32px;
+    background-color: var(--buttons-dark-default);
+  }
+
+  .search__field .btn-icon--search:hover {
+    background-color: var(--buttons-dark-hover);
+  }
+
+  .search__field .btn-icon--search img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .search__input {
+    font-size: var(--body-small-font-size);
+  }
+
+  .search__input::placeholder {
+    text-overflow: ellipsis;
+  }
+
+  .search__clear {
+    order: 1;
+  }
+
+  .search__inner > .search__results {
+    flex: 1;
+    gap: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .search__list {
+    gap: 24px;
+  }
+
+  /* На мобильном название переносится целиком, между результатами — линия */
+  .search__item {
+    max-width: none;
+    padding: 0 16px 12px;
+    border-bottom: 1px solid var(--color-background-200);
+  }
+
+  .search__title {
+    font-size: var(--body-small-font-size);
+    white-space: normal;
+  }
+
+  .search__empty {
+    font-size: var(--body-small-font-size);
+  }
+}
