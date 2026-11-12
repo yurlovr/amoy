@@ -568,7 +568,6 @@ a.pagination__item:hover {
   overflow: hidden;
   border-radius: var(--radius-card);
   background-color: var(--color-project-card);
-  transition: box-shadow var(--transition);
 }
 
 /* Под будущую картинку проекта */
@@ -589,10 +588,6 @@ a.pagination__item:hover {
   line-height: var(--h6-line-height);
   text-transform: uppercase;
   color: var(--color-background-100);
-}
-
-.project-card:hover {
-  box-shadow: var(--shadow-card-hover);
 }
 
 /* ==========================================================================
