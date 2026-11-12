@@ -188,7 +188,7 @@
   min-height: 720px;
   overflow: hidden;
   color: var(--color-background-100);
-  background-color: var(--color-blue-800);
+  background-color: #000;
 }
 
 /* Слайдер — только фоновые картинки, текст поверх стоит на месте */

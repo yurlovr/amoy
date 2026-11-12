@@ -105,8 +105,9 @@
   /* ---------- Цвета: макет без отдельных переменных ---------- */
   --color-project-card: #cbd0ff;
   --color-map-placeholder: rgba(234, 132, 204, 0.6);
-  --hero-gradient: linear-gradient(190deg, rgba(7, 0, 176, 0) 43.7%, #0700b0 88%);
-  --hero-gradient-mobile: linear-gradient(180deg, rgba(16, 5, 79, 0.44) 0%, rgba(7, 0, 176, 0.38) 40%, #0700b0 80%, #0700b0 100%);
+  /* Затемнение главного слайдера: сверху темнее, к низу прозрачно (макет 1367:54307) */
+  --hero-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.05) 52.7%, rgba(0, 0, 0, 0) 105.4%);
+  --hero-gradient-mobile: var(--hero-gradient);
 
   /* ---------- Шрифты ---------- */
   --font-unbounded: "Unbounded", sans-serif;
