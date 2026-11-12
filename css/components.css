@@ -505,8 +505,13 @@ a.pagination__item:hover {
   object-fit: cover;
 }
 
+/* Свечение при наведении: у новостей розовое, у событий оранжевое (макет) */
 .card:hover .card__image {
   box-shadow: var(--shadow-card-hover);
+}
+
+.card--event:hover .card__image {
+  box-shadow: var(--shadow-event-hover);
 }
 
 .card__body {
