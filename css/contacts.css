@@ -12,9 +12,9 @@
   line-height: var(--h3-line-height);
 }
 
-/* Карта занимает всё место до футера, но не ниже 600px */
 .contacts__map {
   position: relative;
+  isolation: isolate;
   display: flex;
   flex: 1 0 auto;
   width: 100%;
@@ -26,7 +26,6 @@
 /* Розовый оттенок карты — общий для всех карт, см. css/sections.css */
 .contacts__map-canvas {
   position: relative;
-  /* Свой контекст наложения: слои карты не перекроют карточку */
   isolation: isolate;
   flex: 1;
   overflow: hidden;
@@ -34,7 +33,6 @@
   background-color: var(--color-map-placeholder);
 }
 
-/* Карточка не ссылка — без эффекта наведения */
 .map-card--static:hover {
   box-shadow: none;
 }

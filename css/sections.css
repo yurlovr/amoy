@@ -588,6 +588,7 @@
 .map {
   margin-top: 128px;
   position: relative;
+  isolation: isolate;
 }
 
 .map__placeholder,
@@ -655,10 +656,7 @@
   }
 }
 
-/*
-  Карта на странице «Члены Ассоциации» (вкладка «Интерактивная карта»):
-  на всю ширину (до 1440px), сразу под вкладками, до футера — отступ 128px.
-*/
+
 .map--page {
   margin: 0 calc(var(--container-padding) * -1);
 }
@@ -836,7 +834,6 @@
     padding-top: 32px;
   }
 
-  /* Логотип и VK в одну строку, навигация переносится ниже на всю ширину */
   .footer__top {
     flex-wrap: wrap;
     align-items: center;
