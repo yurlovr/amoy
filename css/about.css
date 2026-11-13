@@ -60,14 +60,14 @@
 
 /* ---------- Задачи Ассоциации ---------- */
 
+/* Блок и лента — на всю ширину экрана */
 .tasks {
-  max-width: var(--container-width);
-  margin: 0 auto;
   padding: 48px 0;
   background-color: var(--color-background-200);
 }
 
 /* Лента: прокручивается по горизонтали, полоса прокрутки скрыта */
+/* Лента от края до края экрана, бесконечная (js/about.js); первая карточка — у левого края */
 .tasks__track {
   display: flex;
   gap: 24px;
@@ -129,6 +129,12 @@
   font-size: var(--h5-font-size);
   font-weight: var(--h5-font-weight);
   line-height: var(--h5-line-height);
+  /* Длинный заголовок обрезаем многоточием, чтобы он не сдвигал картинку вниз */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
 }
 
 .task__image {
@@ -403,6 +409,8 @@
   .task__title {
     font-size: 16px;
     line-height: 1.3;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
   }
 
   .task.is-active .task__image {

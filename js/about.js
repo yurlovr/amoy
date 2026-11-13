@@ -20,32 +20,55 @@
     const track = root.querySelector('.js-tasks-track');
     if (!track) return;
 
+    const originals = [...track.querySelectorAll('.task')];
+    const count = originals.length;
+    if (!count) return;
+
+    const makeCopy = (card) => {
+      const copy = card.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      copy.setAttribute('tabindex', '-1');
+      return copy;
+    };
+    originals.forEach((card) => track.appendChild(makeCopy(card)));
+    [...originals].reverse().forEach((card) => track.prepend(makeCopy(card)));
+
+    // Все карточки по порядку: [копии][оригиналы][копии]
     const cards = [...track.querySelectorAll('.task')];
-    if (!cards.length) return;
 
     const prev = root.querySelector('.js-tasks-prev');
     const next = root.querySelector('.js-tasks-next');
-    let current = Math.max(0, cards.findIndex((card) => card.classList.contains('is-active')));
+    let current = Math.max(0, originals.findIndex((card) => card.classList.contains('is-active')));
 
-    const maxScroll = () => track.scrollWidth - track.clientWidth;
+    const paddingLeft = () => parseFloat(getComputedStyle(track).paddingLeft) || 0;
+
+    // Прокрутка без анимации (в CSS у ленты плавная прокрутка)
+    const jumpTo = (left) => {
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = left;
+      track.style.scrollBehavior = '';
+    };
+
+    // Начало среднего набора и ширина одного набора
+    const middleStart = () => cards[count].offsetLeft - paddingLeft();
+    const setWidth = () => cards[count * 2].offsetLeft - cards[count].offsetLeft;
+
+    // Если ушли за половину набора от начала среднего — переносим обратно
+    const keepInMiddle = () => {
+      const start = middleStart();
+      const width = setWidth();
+      if (track.scrollLeft < start - width / 2) jumpTo(track.scrollLeft + width);
+      else if (track.scrollLeft > start + width / 2) jumpTo(track.scrollLeft - width);
+    };
 
     // Если раскрытая карточка не видна целиком — докручиваем ленту до неё
     const revealCard = (card) => {
-      const padding = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+      const padding = paddingLeft();
       const left = card.offsetLeft - padding;
       const right = card.offsetLeft + card.offsetWidth + padding - track.clientWidth;
 
-      let target = track.scrollLeft;
-      if (track.scrollLeft > left) target = left;
-      else if (track.scrollLeft < right) target = right;
-
-      track.scrollTo({ left: Math.max(0, Math.min(target, maxScroll())), behavior: 'smooth' });
-    };
-
-    // Стрелки неактивны, когда листать дальше некуда
-    const updateArrows = () => {
-      if (prev) prev.disabled = track.scrollLeft <= 2;
-      if (next) next.disabled = track.scrollLeft >= maxScroll() - 2;
+      if (track.scrollLeft > left) track.scrollTo({ left, behavior: 'smooth' });
+      else if (track.scrollLeft < right) track.scrollTo({ left: right, behavior: 'smooth' });
     };
 
     // Шаг прокрутки — ширина закрытой карточки + промежуток
@@ -55,32 +78,29 @@
       return closed.offsetWidth + gap;
     };
 
-    const activate = (index) => {
-      if (index < 0 || index >= cards.length) return;
+    // Раскрываем задачу index во всех трёх наборах; clicked — карточка, по которой кликнули
+    const activate = (index, clicked) => {
       current = index;
 
       cards.forEach((card, i) => {
-        const active = i === index;
+        const active = i % count === index;
         card.classList.toggle('is-active', active);
-        card.setAttribute('aria-expanded', String(active));
+        if (!card.hasAttribute('aria-hidden')) card.setAttribute('aria-expanded', String(active));
       });
 
       // Ждём окончания анимации ширины, чтобы учесть новые размеры
-      setTimeout(() => {
-        revealCard(cards[index]);
-        updateArrows();
-      }, EXPAND_DURATION);
+      if (clicked) setTimeout(() => revealCard(clicked), EXPAND_DURATION);
     };
 
     cards.forEach((card, i) => {
       card.addEventListener('click', () => {
-        if (i !== current) activate(i);
+        if (!card.classList.contains('is-active')) activate(i % count, card);
       });
 
       card.addEventListener('keydown', (event) => {
-        if ((event.key === 'Enter' || event.key === ' ') && i !== current) {
+        if ((event.key === 'Enter' || event.key === ' ') && !card.classList.contains('is-active')) {
           event.preventDefault();
-          activate(i);
+          activate(i % count, card);
         }
       });
     });
@@ -88,12 +108,21 @@
     prev?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
     next?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
 
-    track.addEventListener('scroll', updateArrows, { passive: true });
-    window.addEventListener('resize', updateArrows);
+    // Переносим ленту, когда прокрутка остановилась (scrollend есть не во всех браузерах)
+    if ('onscrollend' in window) {
+      track.addEventListener('scrollend', keepInMiddle);
+    } else {
+      let timer;
+      track.addEventListener('scroll', () => {
+        clearTimeout(timer);
+        timer = setTimeout(keepInMiddle, 150);
+      }, { passive: true });
+    }
 
     activate(current);
-    track.scrollLeft = 0;
-    updateArrows();
+    // Первая задача — у левого края экрана
+    jumpTo(middleStart());
+    window.addEventListener('resize', keepInMiddle);
   };
 
   /* ------------------------------------------------------------------
