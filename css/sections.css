@@ -68,9 +68,14 @@
   color: var(--buttons-menu-default);
 }
 
-.header--light .header__link:hover,
-.header--light .header__link.is-active {
+.header--light .header__link:hover {
   color: var(--buttons-menu-hover);
+}
+
+/* Активный и нажатый пункт в светлой шапке (buttons/menu/press) */
+.header--light .header__link:active,
+.header--light .header__link.is-active {
+  color: var(--buttons-menu-press);
 }
 
 /* Активный пункт на тёмной шапке (buttons/menu/pressed) */
