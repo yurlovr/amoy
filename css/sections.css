@@ -559,7 +559,7 @@
 }
 
 .map-cluster:hover {
-  background-color: var(--buttons-search-hover);
+  background-color: var(--buttons-map-marker-hover);
 }
 
 /*

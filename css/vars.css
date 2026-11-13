@@ -49,9 +49,13 @@
   --buttons-arrow-pressed: #98056d;
   --buttons-arrow-disabled: #151515;
 
-  --buttons-search-default: #c02e95;
-  --buttons-search-hover: #ce51aa;
+  --buttons-search-default: #151515;
+  --buttons-search-hover: #c02e95;
   --buttons-search-pressed: #98056d;
+  /* Кнопка-бургер (открыть/закрыть меню) — прежний розовый цвет */
+  --buttons-burger-default: #c02e95;
+  --buttons-burger-hover: #ce51aa;
+  --buttons-burger-pressed: #98056d;
 
   --buttons-contact-default: #151515;
   --buttons-contact-hover: #c02e95;
@@ -71,6 +75,7 @@
   --buttons-text-underlined-default-light: #ffffff;
 
   --buttons-map-marker-default: #c02e95;
+  --buttons-map-marker-hover: #ce51aa;
 
   --buttons-menu-default: #151515;
   --buttons-menu-hover: #ea84cc;

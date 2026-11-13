@@ -109,19 +109,29 @@
 }
 
 /* Поиск и меню */
-.btn-icon--search,
-.btn-icon--menu {
+/* Поиск — тёмная кнопка (buttons/search) */
+.btn-icon--search {
   background-color: var(--buttons-search-default);
 }
 
-.btn-icon--search:hover,
-.btn-icon--menu:hover {
+.btn-icon--search:hover {
   background-color: var(--buttons-search-hover);
 }
 
-.btn-icon--search:active,
-.btn-icon--menu:active {
+.btn-icon--search:active {
   background-color: var(--buttons-search-pressed);
+}
+
+.btn-icon--menu {
+  background-color: var(--buttons-burger-default);
+}
+
+.btn-icon--menu:hover {
+  background-color: var(--buttons-burger-hover);
+}
+
+.btn-icon--menu:active {
+  background-color: var(--buttons-burger-pressed);
 }
 
 /* ---------- Соцсеть (ВКонтакте), светлый вариант ---------- */
