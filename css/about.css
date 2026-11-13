@@ -2,9 +2,7 @@
 
 .about-hero {
   position: relative;
-  max-width: var(--container-width);
   min-height: 568px;
-  margin: 0 auto;
   overflow: hidden;
   color: var(--color-background-100);
   background-color: #000;
