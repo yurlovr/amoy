@@ -29,12 +29,9 @@
   /* Свой контекст наложения: слои карты не перекроют карточку */
   isolation: isolate;
   flex: 1;
+  overflow: hidden;
+  border-radius: var(--radius-map);
   background-color: var(--color-map-placeholder);
-}
-
-/* Футер вплотную к карте */
-body:has(.contacts) .footer {
-  margin-top: 0;
 }
 
 /* Карточка не ссылка — без эффекта наведения */

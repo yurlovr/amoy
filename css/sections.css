@@ -595,6 +595,8 @@
   max-width: var(--container-width);
   margin: 0 auto;
   height: 600px;
+  overflow: hidden;
+  border-radius: var(--radius-map);
   background-color: var(--color-map-placeholder);
 }
 
@@ -638,7 +640,7 @@
     width: 100%;
     max-width: 375px;
     padding: 16px 16px 24px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px var(--radius-map) var(--radius-map); /* низ — как у скруглённой карты */
     transform: translateX(-50%);
   }
 
@@ -655,15 +657,12 @@
 
 /*
   Карта на странице «Члены Ассоциации» (вкладка «Интерактивная карта»):
-  на всю ширину (до 1440px), сразу под вкладками, футер — вплотную к карте.
+  на всю ширину (до 1440px), сразу под вкладками, до футера — отступ 128px.
 */
 .map--page {
   margin: 0 calc(var(--container-padding) * -1);
 }
 
-body:has(.js-members-map:not([hidden])) .footer {
-  margin-top: 0;
-}
 
 @media (max-width: 767px) {
   .map--page {
