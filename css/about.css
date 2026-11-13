@@ -220,10 +220,10 @@
 
 /* ---------- Руководство ---------- */
 
+/* Фон блока — на всю ширину экрана; сам слайдер — не шире 1440px (см. .leaders__slider) */
 .leaders {
   position: relative;
-  max-width: var(--container-width);
-  margin: 96px auto 0;
+  margin: 96px 0 0;
   padding: 64px 0 32px;
   overflow: hidden;
   background-color: var(--color-text-900);
@@ -235,7 +235,9 @@
 }
 
 .leaders__slider {
-  overflow: visible;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .leaders__slider .swiper-wrapper {
